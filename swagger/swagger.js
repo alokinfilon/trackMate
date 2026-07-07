@@ -32,7 +32,7 @@ const swaggerOptions = {
     ],
     servers: [
       {
-        url: 'https://fitmatters-backend.onrender.com',
+        url: 'https://trackmate-x7ue.onrender.com',
         description: 'Production Server (Render)',
       },
       
