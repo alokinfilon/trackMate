@@ -28,3 +28,67 @@
 1783415164181:::1 GET: /auth/whoami
 
 1783415200760:::1 GET: /auth/whoami
+
+1783416484671:::1 GET: /api-docs/
+
+1783416484772:::1 GET: /api-docs/swagger-ui.css
+
+1783416484774:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1783416484775:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1783416484777:::1 GET: /api-docs/swagger-ui-init.js
+
+1783416512121:::1 POST: /auth/login
+
+1783597138949:::1 GET: /api-docs/
+
+1783597140598:::1 GET: /api-docs/swagger-ui.css
+
+1783597140601:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1783597140602:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1783597140605:::1 GET: /api-docs/swagger-ui-init.js
+
+1783597156022:::1 GET: /locations
+
+1783597164971:::1 GET: /locations
+
+1783597303619:::1 GET: /locations
+
+1783597348187:::1 GET: /locations
+
+1783597437697:::1 GET: /locations/
+
+1783597553940:::1 GET: /api-docs/
+
+1783597555829:::1 GET: /api-docs/swagger-ui.css
+
+1783597555831:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1783597555832:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1783597555835:::1 GET: /api-docs/swagger-ui-init.js
+
+1783597568133:::1 GET: /locations
+
+1783597773829:::1 GET: /locations/
+
+1783597875445:::1 GET: /locations/
+
+1783597876003:::1 GET: /favicon.ico
+
+1783598392167:::1 GET: /locations/
+
+1783598493259:::1 GET: /api-docs/
+
+1783598495121:::1 GET: /api-docs/swagger-ui.css
+
+1783598495122:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1783598495123:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1783598495123:::1 GET: /api-docs/swagger-ui-init.js
+
+1783598507772:::1 GET: /locations/1
