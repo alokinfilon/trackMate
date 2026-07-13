@@ -25,6 +25,9 @@ const swaggerSpec = require('./swagger/swagger');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
+
+
 connectMongoDb(process.env.MONGO_URI)
     .then(() => {
         console.log("MongoDB connected successfully to historical database cluster.");
@@ -37,11 +40,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(logReqRes("log.txt"));
 
-app.use("/locations", locationRoutes);       
-app.use("/auth", authRouter); 
+app.get('/health', (req, res) => res.status(200).send('Server is alive!'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.get('/health', (req, res) => res.status(200).send('Server is alive!'));
+app.use("/auth", authRouter); 
+
+app.use("/locations", passport.authenticate("jwt", { session: false }), locationRoutes);       
+
+
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);    

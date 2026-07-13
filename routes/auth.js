@@ -7,6 +7,7 @@ const {
   loginUser,
   whoami,
   refreshToken,
+  auth0LoginOrSignup
 } = require("../controllers/auth");
 const validator = require("../middleware/validator");
 
@@ -25,6 +26,10 @@ router
     validator.validate,
     refreshToken
   );
+
+router
+  .route("/auth0-sync")
+  .post(auth0LoginOrSignup);
 
 router
   .route("/whoami")

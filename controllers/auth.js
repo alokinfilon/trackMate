@@ -1,6 +1,21 @@
 const User = require("../models/user");
 const helper = require("../utils/helper");
 const RefreshToken = require("../models/refreshToken");
+const jwt = require("jsonwebtoken");
+const jwksClient = require("jwks-rsa");
+const axios = require("axios"); // Added to support direct Auth0 server-to-server validation
+
+const client = jwksClient({
+  jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
+});
+
+function getKey(header, callback) {
+  client.getSigningKey(header.kid, function (err, key) {
+    if (err) return callback(err);
+    const signingKey = key.getPublicKey();
+    callback(null, signingKey);
+  });
+}
 
 async function listUsers(req, res) {
   const users = await User.find({}).exec();
@@ -106,10 +121,113 @@ async function whoami(req, res) {
   return res.status(200).json(req.user);
 }
 
+/**
+ * Validates an Auth0 Identity token or Access token, logs in or registers the user in MongoDB,
+ * and issues native ecosystem JWT sessions.
+ */
+async function auth0LoginOrSignup(req, res) {
+  // Support either idToken (cryptographic parsing) or accessToken (UserInfo endpoint fallback)
+  const { idToken, accessToken } = req.body;
+  const tokenToVerify = idToken || accessToken;
+
+  if (!tokenToVerify) {
+    return res.status(400).json({ error: "Auth0 Token (idToken or accessToken) is required." });
+  }
+
+  // 1. Decode token profile properties without verification checks for visibility
+  const unverifiedDecoded = jwt.decode(tokenToVerify);
+  console.log("--- DEBUGGING AUTH0 PAYLOAD ---");
+  console.log("Token Audience (aud):", unverifiedDecoded?.aud);
+  console.log("Token Issuer (iss):", unverifiedDecoded?.iss);
+  console.log("User Email inside Token:", unverifiedDecoded?.email || "undefined");
+  console.log("--------------------------------");
+
+  // If we detect an Access Token (Audience is an API URL like your Render URL instead of a Client ID string)
+  // or if the email is undefined, we use the bulletproof UserInfo fetching route
+  if (!unverifiedDecoded?.email || String(unverifiedDecoded?.aud).startsWith("http")) {
+    console.log("Detecting Access Token or missing email profile. Fetching directly from Auth0 UserInfo endpoint...");
+    try {
+      const userInfoResponse = await axios.get(`https://${process.env.AUTH0_DOMAIN}/userinfo`, {
+        headers: { Authorization: `Bearer ${tokenToVerify}` }
+      });
+      return proceedWithSync(userInfoResponse.data, res);
+    } catch (apiError) {
+      console.error("Auth0 UserInfo endpoint communication failure:", apiError.response?.data || apiError.message);
+      return res.status(401).json({ error: "Failed to authenticate session token via Auth0 server verification lookup." });
+    }
+  }
+
+  // 2. Fallback: Verify the standard cryptographic RS256 token signature 
+  jwt.verify(
+    tokenToVerify,
+    getKey,
+    {
+      audience: process.env.AUTH0_CLIENT_ID,
+      issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+      algorithms: ["RS256"],
+    },
+    async (err, decodedAuth0User) => {
+      if (err) {
+        console.error("Auth0 Cryptographic Signature Check Failed:", err.message);
+        return res.status(401).json({ error: `Invalid or expired Auth0 token: ${err.message}` });
+      }
+      return proceedWithSync(decodedAuth0User, res);
+    }
+  );
+}
+
+// Internal processor to map profile metadata variables and update MongoDB
+async function proceedWithSync(decodedAuth0User, res) {
+  try {
+    const emailValue = decodedAuth0User.email ? decodedAuth0User.email.toLowerCase() : null;
+
+    if (!emailValue) {
+      return res.status(400).json({ error: "Email field missing from Auth0 authentication claim." });
+    }
+
+    // Cross-reference user data record within MongoDB cluster
+    let user = await User.findOne({ email: emailValue });
+
+    if (!user) {
+      user = await User.create({
+        email: emailValue,
+        auth0Id: decodedAuth0User.sub, 
+      });
+      console.log(`New Auth0 user registered in DB: ${user.email}`);
+    } else if (!user.auth0Id) {
+      user.auth0Id = decodedAuth0User.sub;
+      await user.save();
+      console.log(`Linked existing credentials account profile to Auth0 ID: ${user.email}`);
+    } else {
+      console.log(`Existing Auth0 user logged in: ${user.email}`);
+    }
+
+    const payload = {
+      email: user.email || null,
+      mobile: user.mobile || null,
+      id: user.id,
+    };
+
+    const accessToken = helper.issueAccessToken(payload);
+    const refreshToken = await helper.createRefreshToken(user.id);
+
+    return res.status(200).json({
+      accessToken,
+      refreshToken,
+      userId: user.id,
+    });
+
+  } catch (dbError) {
+    console.error("MongoDB Auth0 Sync Error:", dbError.message);
+    return res.status(500).json({ error: `Internal database processing failure: ${dbError.message}` });
+  }
+}
+
 module.exports = {
   createUser,
   listUsers,
   loginUser,
   whoami,
   refreshToken,
+  auth0LoginOrSignup, 
 };
