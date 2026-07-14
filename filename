@@ -250,3 +250,35 @@
 1784022978595:::1 POST: /auth/auth0-sync
 
 1784023470749:::1 POST: /auth/auth0-sync
+
+1784030156070:::1 GET: /api-docs/
+
+1784030156141:::1 GET: /api-docs/swagger-ui.css
+
+1784030156143:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1784030156144:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1784030156183:::1 GET: /api-docs/swagger-ui-init.js
+
+1784056064925:::1 GET: /api-docs/
+
+1784056065019:::1 GET: /api-docs/swagger-ui.css
+
+1784056065021:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1784056065022:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1784056065023:::1 GET: /api-docs/swagger-ui-init.js
+
+1784056163123:::1 GET: /api-docs/
+
+1784056163189:::1 GET: /api-docs/swagger-ui.css
+
+1784056163192:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1784056163193:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1784056163204:::1 GET: /api-docs/swagger-ui-init.js
+
+1784056178583:::1 GET: /locations

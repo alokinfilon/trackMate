@@ -49,8 +49,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/auth", authRouter); 
 
-app.use("/locations", passport.authenticate("jwt", { session: false }), locationRoutes);       
-
+app.use("/locations", locationRoutes);
 
 
 app.use(notFoundMiddleware);
