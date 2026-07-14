@@ -1,7 +1,11 @@
-require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
 
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
+    try {
+        require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
+        console.log("Local DNS overrides applied.");
+    } catch (err) {
+        console.warn("Failed to set custom local DNS servers:", err.message);
+    }
 }
 
 const express = require('express');

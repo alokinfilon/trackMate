@@ -130,68 +130,80 @@ async function whoami(req, res) {
  * and issues native ecosystem JWT sessions.
  */
 async function auth0LoginOrSignup(req, res) {
-  // 1. First, look for the token in the standard HTTP Authorization Header
-  let tokenToVerify = null;
-  const authHeader = req.headers.authorization;
+  try {
+    // 1. First, look for the token in the standard HTTP Authorization Header
+    let tokenToVerify = null;
+    const authHeader = req.headers.authorization;
 
-  if (authHeader && authHeader.startsWith("Bearer ")) {
-    tokenToVerify = authHeader.split(" ")[1]; // Extracts the token string
-  }
+    if (authHeader && authHeader.toLowerCase().startsWith("bearer ")) {
+      tokenToVerify = authHeader.substring(7).trim(); 
+    }
 
-  // 2. Fallback: If not found in headers, check the request body (keeps older routes working)
-  if (!tokenToVerify) {
-    const { idToken, accessToken } = req.body;
-    tokenToVerify = idToken || accessToken;
-  }
+    // 2. Fallback: Check request body
+    if (!tokenToVerify) {
+      const { idToken, accessToken } = req.body;
+      tokenToVerify = idToken || accessToken;
+    }
 
-  // If no token is found in headers OR body, reject early
-  if (!tokenToVerify) {
-    return res.status(400).json({ 
-      error: "Auth0 Token is missing. Provide it via Bearer token header or request body." 
-    });
-  }
-
-  // 3. Decode token profile properties without verification checks for visibility
-  const unverifiedDecoded = jwt.decode(tokenToVerify);
-  console.log("--- DEBUGGING AUTH0 PAYLOAD ---");
-  console.log("Token Audience (aud):", unverifiedDecoded?.aud);
-  console.log("Token Issuer (iss):", unverifiedDecoded?.iss);
-  console.log("User Email inside Token:", unverifiedDecoded?.email || "undefined");
-  console.log("--------------------------------");
-
-  // If we detect an Access Token (Audience is an API URL like your Render URL instead of a Client ID string)
-  // or if the email is undefined, we use the bulletproof UserInfo fetching route
-  if (!unverifiedDecoded?.email || String(unverifiedDecoded?.aud).startsWith("http")) {
-    console.log("Detecting Access Token or missing email profile. Fetching directly from Auth0 UserInfo endpoint...");
-    try {
-      const userInfoResponse = await axios.get(`https://${process.env.AUTH0_DOMAIN}/userinfo`, {
-        headers: { Authorization: `Bearer ${tokenToVerify}` }
+    if (!tokenToVerify || tokenToVerify === "undefined" || tokenToVerify === "null") {
+      return res.status(400).json({ 
+        error: "Auth0 Token is missing or malformed. Provide it via Bearer token header or request body." 
       });
-      return proceedWithSync(userInfoResponse.data, res);
-    } catch (apiError) {
-      console.error("Auth0 UserInfo endpoint communication failure:", apiError.response?.data || apiError.message);
-      return res.status(401).json({ error: "Failed to authenticate session token via Auth0 server verification lookup." });
     }
-  }
 
-  // 4. Fallback: Verify the standard cryptographic RS256 token signature 
-  jwt.verify(
-    tokenToVerify,
-    getKey,
-    {
-      audience: process.env.AUTH0_CLIENT_ID,
-      issuer: `https://${process.env.AUTH0_DOMAIN}/`,
-      algorithms: ["RS256"],
-    },
-    async (err, decodedAuth0User) => {
-      if (err) {
-        console.error("Auth0 Cryptographic Signature Check Failed:", err.message);
-        return res.status(401).json({ error: `Invalid or expired Auth0 token: ${err.message}` });
-      }
-      return proceedWithSync(decodedAuth0User, res);
+    // 3. Decode token properties safely
+    const unverifiedDecoded = jwt.decode(tokenToVerify);
+    if (!unverifiedDecoded) {
+      return res.status(400).json({ error: "Failed to decode malformed JWT token structure." });
     }
-  );
+
+    console.log("--- DEBUGGING AUTH0 PAYLOAD ---");
+    console.log("Token Audience (aud):", unverifiedDecoded?.aud);
+    console.log("Token Issuer (iss):", unverifiedDecoded?.iss);
+    console.log("User Email inside Token:", unverifiedDecoded?.email || "undefined");
+    console.log("--------------------------------");
+
+    // If we detect an Access Token or if the email is undefined, use UserInfo endpoint
+    if (!unverifiedDecoded?.email || String(unverifiedDecoded?.aud).startsWith("http")) {
+      console.log("Detecting Access Token or missing email profile. Fetching directly from Auth0 UserInfo endpoint...");
+      try {
+        const userInfoResponse = await axios.get(`https://${process.env.AUTH0_DOMAIN}/userinfo`, {
+          headers: { Authorization: `Bearer ${tokenToVerify}` }
+        });
+        // Await the sync execution to preserve parameter scopes
+        return await proceedWithSync(userInfoResponse.data, res);
+      } catch (apiError) {
+        console.error("Auth0 UserInfo endpoint communication failure:", apiError.response?.data || apiError.message);
+        return res.status(401).json({ error: "Failed to authenticate session token via Auth0 server verification lookup." });
+      }
+    }
+
+    // 4. FIXED: Wrap jwt.verify in a flat Promise structure to prevent argument corruption
+    const decodedAuth0User = await new Promise((resolve, reject) => {
+      jwt.verify(
+        tokenToVerify,
+        getKey,
+        {
+          audience: process.env.AUTH0_CLIENT_ID,
+          issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+          algorithms: ["RS256"],
+        },
+        (err, decoded) => {
+          if (err) reject(err);
+          else resolve(decoded);
+        }
+      );
+    });
+
+    return await proceedWithSync(decodedAuth0User, res);
+
+  } catch (error) {
+    console.error("Auth0 Verification Middleware Pipeline Failure:", error.message);
+    return res.status(401).json({ error: `Invalid or expired Auth0 token: ${error.message}` });
+  }
 }
+
+
 
 
 // Internal processor to map profile metadata variables and update MongoDB
