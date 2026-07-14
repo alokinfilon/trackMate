@@ -125,16 +125,33 @@ async function whoami(req, res) {
  * Validates an Auth0 Identity token or Access token, logs in or registers the user in MongoDB,
  * and issues native ecosystem JWT sessions.
  */
+/**
+ * Validates an Auth0 Identity token or Access token, logs in or registers the user in MongoDB,
+ * and issues native ecosystem JWT sessions.
+ */
 async function auth0LoginOrSignup(req, res) {
-  // Support either idToken (cryptographic parsing) or accessToken (UserInfo endpoint fallback)
-  const { idToken, accessToken } = req.body;
-  const tokenToVerify = idToken || accessToken;
+  // 1. First, look for the token in the standard HTTP Authorization Header
+  let tokenToVerify = null;
+  const authHeader = req.headers.authorization;
 
-  if (!tokenToVerify) {
-    return res.status(400).json({ error: "Auth0 Token (idToken or accessToken) is required." });
+  if (authHeader && authHeader.startsWith("Bearer ")) {
+    tokenToVerify = authHeader.split(" ")[1]; // Extracts the token string
   }
 
-  // 1. Decode token profile properties without verification checks for visibility
+  // 2. Fallback: If not found in headers, check the request body (keeps older routes working)
+  if (!tokenToVerify) {
+    const { idToken, accessToken } = req.body;
+    tokenToVerify = idToken || accessToken;
+  }
+
+  // If no token is found in headers OR body, reject early
+  if (!tokenToVerify) {
+    return res.status(400).json({ 
+      error: "Auth0 Token is missing. Provide it via Bearer token header or request body." 
+    });
+  }
+
+  // 3. Decode token profile properties without verification checks for visibility
   const unverifiedDecoded = jwt.decode(tokenToVerify);
   console.log("--- DEBUGGING AUTH0 PAYLOAD ---");
   console.log("Token Audience (aud):", unverifiedDecoded?.aud);
@@ -157,7 +174,7 @@ async function auth0LoginOrSignup(req, res) {
     }
   }
 
-  // 2. Fallback: Verify the standard cryptographic RS256 token signature 
+  // 4. Fallback: Verify the standard cryptographic RS256 token signature 
   jwt.verify(
     tokenToVerify,
     getKey,
@@ -175,6 +192,7 @@ async function auth0LoginOrSignup(req, res) {
     }
   );
 }
+
 
 // Internal processor to map profile metadata variables and update MongoDB
 async function proceedWithSync(decodedAuth0User, res) {

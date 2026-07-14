@@ -210,3 +210,5 @@
 1783940740778:::1 GET: /api-docs/swagger-ui-standalone-preset.js
 
 1783940740778:::1 GET: /api-docs/swagger-ui-init.js
+
+1783941215658:::1 POST: /auth/auth0-sync
