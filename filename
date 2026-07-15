@@ -1,0 +1,30 @@
+
+1784108590237:::1 GET: /api-docs/
+
+1784108590324:::1 GET: /api-docs/swagger-ui.css
+
+1784108590332:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1784108590334:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1784108590333:::1 GET: /api-docs/swagger-ui-init.js
+
+1784108607138:::1 GET: /locations
+
+1784108636550:::1 GET: /locations
+
+1784108663388:::1 POST: /auth/login
+
+1784108679523:::1 GET: /locations
+
+1784113435041:::1 GET: /api-docs/
+
+1784113435178:::1 GET: /api-docs/swagger-ui.css
+
+1784113435181:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1784113435182:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1784113435183:::1 GET: /api-docs/swagger-ui-init.js
+
+1784113448354:::1 GET: /locations

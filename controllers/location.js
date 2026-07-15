@@ -34,7 +34,7 @@ exports.getHistoricalSites = async (req, res) => {
         const skipIndex = (parseInt(page) - 1) * parsedLimit;
 
         const historicalSites = await HistoricalSite.find(queryFilter)
-            .select('location_id name category description overall_rating geography.city geography.state geography.country geography.address media.hero_image_url media.gallery logistics.entry_fee logistics.basis opening_hours.weekday  opening_hours.weekends best_time_to_visit crowd_level_indicator historical_context.historical_era    historical_context.year_established  historical_context.architectural_style    historical_context.guided_tours_available   historical_context.tour_cost  trivia_and_culture.quick_facts    trivia_and_culture.famous_visitors    trivia_and_culture.hidden_gem  ')
+            .select('location_id name category description overall_rating geography.city geography.state geography.country geography.address media.hero_image_url media.gallery logistics.entry_fee logistics.basis opening_hours.weekday  opening_hours.weekends best_time_to_visit crowd_level_indicator historical_context.historical_era    historical_context.year_established  historical_context.architectural_style    historical_context.guided_tours_available   historical_context.tour_cost  trivia_and_culture.quick_facts    trivia_and_culture.famous_visitors    trivia_and_culture.hidden_gem  sub_locations')
             .sort({ overall_rating: -1 }) 
             .skip(skipIndex)
             .limit(parsedLimit)
