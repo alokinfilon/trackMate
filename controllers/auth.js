@@ -3,7 +3,7 @@ const helper = require("../utils/helper");
 const RefreshToken = require("../models/refreshToken");
 const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
-const axios = require("axios"); // Added to support direct Auth0 server-to-server validation
+const axios = require("axios"); 
 
 const client = jwksClient({
   jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
@@ -121,17 +121,9 @@ async function whoami(req, res) {
   return res.status(200).json(req.user);
 }
 
-/**
- * Validates an Auth0 Identity token or Access token, logs in or registers the user in MongoDB,
- * and issues native ecosystem JWT sessions.
- */
-/**
- * Validates an Auth0 Identity token or Access token, logs in or registers the user in MongoDB,
- * and issues native ecosystem JWT sessions.
- */
+
 async function auth0LoginOrSignup(req, res) {
   try {
-    // 1. First, look for the token in the standard HTTP Authorization Header
     let tokenToVerify = null;
     const authHeader = req.headers.authorization;
 
@@ -139,7 +131,6 @@ async function auth0LoginOrSignup(req, res) {
       tokenToVerify = authHeader.substring(7).trim(); 
     }
 
-    // 2. Fallback: Check request body
     if (!tokenToVerify) {
       const { idToken, accessToken } = req.body;
       tokenToVerify = idToken || accessToken;
@@ -151,7 +142,6 @@ async function auth0LoginOrSignup(req, res) {
       });
     }
 
-    // 3. Decode token properties safely
     const unverifiedDecoded = jwt.decode(tokenToVerify);
     if (!unverifiedDecoded) {
       return res.status(400).json({ error: "Failed to decode malformed JWT token structure." });
@@ -163,22 +153,18 @@ async function auth0LoginOrSignup(req, res) {
     console.log("User Email inside Token:", unverifiedDecoded?.email || "undefined");
     console.log("--------------------------------");
 
-    // If we detect an Access Token or if the email is undefined, use UserInfo endpoint
     if (!unverifiedDecoded?.email || String(unverifiedDecoded?.aud).startsWith("http")) {
       console.log("Detecting Access Token or missing email profile. Fetching directly from Auth0 UserInfo endpoint...");
       try {
         const userInfoResponse = await axios.get(`https://${process.env.AUTH0_DOMAIN}/userinfo`, {
           headers: { Authorization: `Bearer ${tokenToVerify}` }
         });
-        // Await the sync execution to preserve parameter scopes
         return await proceedWithSync(userInfoResponse.data, res);
       } catch (apiError) {
         console.error("Auth0 UserInfo endpoint communication failure:", apiError.response?.data || apiError.message);
         return res.status(401).json({ error: "Failed to authenticate session token via Auth0 server verification lookup." });
       }
     }
-
-    // 4. FIXED: Wrap jwt.verify in a flat Promise structure to prevent argument corruption
     const decodedAuth0User = await new Promise((resolve, reject) => {
       jwt.verify(
         tokenToVerify,
@@ -206,7 +192,6 @@ async function auth0LoginOrSignup(req, res) {
 
 
 
-// Internal processor to map profile metadata variables and update MongoDB
 async function proceedWithSync(decodedAuth0User, res) {
   try {
     const emailValue = decodedAuth0User.email ? decodedAuth0User.email.toLowerCase() : null;
@@ -215,7 +200,6 @@ async function proceedWithSync(decodedAuth0User, res) {
       return res.status(400).json({ error: "Email field missing from Auth0 authentication claim." });
     }
 
-    // Cross-reference user data record within MongoDB cluster
     let user = await User.findOne({ email: emailValue });
 
     if (!user) {

@@ -5,7 +5,6 @@ const fs = require('fs').promises;
 const path = require('path');
 const dns = require('dns');
 
-// Forces clean public DNS routing for MongoDB Atlas cloud clusters
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 program
@@ -23,26 +22,21 @@ const executeMigration = async (filePath) => {
         const fileContent = await fs.readFile(absolutePath, 'utf-8');
         const parsedJSON = JSON.parse(fileContent);
 
-        // Flexibly extracts an array if root level is an object wrapper or raw array
         let dataArray = Array.isArray(parsedJSON) ? parsedJSON : parsedJSON.locations || parsedJSON.products;
 
         if (!dataArray || dataArray.length === 0) {
             throw new Error('Target JSON file does not contain a valid array of items.');
         }
 
-        // ✨ DATA CLEANING STEP: Maps flat coordinates to explicit Mongoose GeoJSON format
         dataArray = dataArray.map((item, index) => {
             if (!item.geography) {
                 item.geography = {};
             }
 
-            // Always enforce required GeoJSON Point type
             item.geography.type = "Point";
 
-            // If coordinates array doesn't exist yet, construct it from properties
             if (!item.geography.coordinates) {
                 if (item.geography.latitude !== undefined && item.geography.longitude !== undefined) {
-                    // CRITICAL: GeoJSON requires [longitude, latitude] sequence order
                     item.geography.coordinates = [
                         Number(item.geography.longitude), 
                         Number(item.geography.latitude)
@@ -54,7 +48,6 @@ const executeMigration = async (filePath) => {
                 }
             }
 
-            // Clean coordinate arrays into pure numbers to ensure no typing failures
             if (item.geography.coordinates) {
                 item.geography.coordinates = item.geography.coordinates.map(Number);
             }
@@ -71,7 +64,6 @@ const executeMigration = async (filePath) => {
         await mongoose.connect(connectionString);
         console.info('Connected to MongoDB database cluster successfully.');
 
-        // Points cleanly to your location model layout
         const HistoricalSite = require('../models/location');
 
         await HistoricalSite.deleteMany({});
@@ -87,7 +79,6 @@ const executeMigration = async (filePath) => {
             cache.clear();
             console.info('🚀 Local RAM cache flushed successfully!');
         } catch (e) {
-            // Silence cache error if package isn't used
         }
 
     } catch (error) {

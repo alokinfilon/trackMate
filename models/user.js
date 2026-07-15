@@ -31,7 +31,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Modern synchronous validation hook (no 'next' needed)
 userSchema.pre("validate", function () {
   if (!this.email && !this.mobile) {
     this.invalidate("email", "Either email or mobile number must be provided.");
@@ -55,5 +54,4 @@ userSchema.set('toJSON', {
   }
 });
 
-// ❌ REMOVED: uniqueValidator plugin setup is gone.
 module.exports = mongoose.model('User', userSchema);

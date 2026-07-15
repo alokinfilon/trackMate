@@ -85,7 +85,6 @@ const historicalSiteSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-// Ensures rapid geospatial query support
 historicalSiteSchema.index({ 'geography.coordinates': '2dsphere' });
 
 const HistoricalSite = mongoose.model('HistoricalSite', historicalSiteSchema);
