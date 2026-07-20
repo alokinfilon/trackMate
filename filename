@@ -204,3 +204,5 @@
 1784472753175:::1 GET: /api-docs/swagger-ui-standalone-preset.js
 
 1784529958050:::1 GET: /api/trips/analytics/chart-stats
+
+1784531307295:::1 PATCH: /api/trips/6a59eacf20a014ca5f258047/update-status
