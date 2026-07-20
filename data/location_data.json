@@ -33,7 +33,7 @@
         "type": "indoor_exhibit",
         "description": "Recreated indoor quarters detailing the harsh winter conditions faced by the 3rd New York Regiment.",
         "price": {
-          "amount": 0.00,
+          "amount": 159,
           "currency": "USD",
           "basis": "free_admission"
         }
@@ -44,9 +44,20 @@
         "type": "historic_walkway",
         "description": "Reinforced bombproof shelters along the inner walls used for heavy artillery and troop cover during sieges.",
         "price": {
-          "amount": 0.00,
+          "amount": 170.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+     {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 120.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -111,7 +122,7 @@
     },
     "logistics": {
       "entry_fee": {
-        "amount": 27.00,
+        "amount": 127.00,
         "currency": "USD",
         "basis": "per_adult_ticket"
       },
@@ -129,7 +140,7 @@
         "type": "outdoor_garden",
         "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
-          "amount": 0.00,
+          "amount": 145.00,
           "currency": "USD",
           "basis": "included_with_admission"
         }
@@ -140,9 +151,20 @@
         "type": "walking_path",
         "description": "A hiking path winding through the preserved earthen log redoubts where the bloodiest battle of the French and Indian War occurred.",
         "price": {
-          "amount": 0.00,
+          "amount": 138.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_3",
+        "name": "The queen's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored imperial garden originally planted by Indian garrison soldiers.",
+        "price": {
+          "amount": 148.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -227,7 +249,7 @@
         "type": "historic_walkway",
         "description": "A brick-vaulted underground chamber heavily reinforced to withstand continuous naval mortar bombardment.",
         "price": {
-          "amount": 0.00,
+          "amount": 659.00,
           "currency": "USD",
           "basis": "included_with_admission"
         }
@@ -238,9 +260,20 @@
         "type": "walking_path",
         "description": "Paved perimeter path right along the water edge where heavy rodman guns pointed out to the bay.",
         "price": {
-          "amount": 0.00,
+          "amount": 654.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 548.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -322,7 +355,7 @@
         "type": "historic_walkway",
         "description": "Damp, dark underground stone chambers used to hold prisoners of war under tight surveillance.",
         "price": {
-          "amount": 0.00,
+          "amount": 560.00,
           "currency": "USD",
           "basis": "included_with_admission"
         }
@@ -333,9 +366,20 @@
         "type": "walking_path",
         "description": "An elevated mud and stone bank providing direct views across the Delaware River shipping lanes.",
         "price": {
-          "amount": 0.00,
+          "amount": 50.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 950.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -399,7 +443,7 @@
     },
     "logistics": {
       "entry_fee": {
-        "amount": 0.00,
+        "amount": 555.00,
         "currency": "USD",
         "basis": "free_entry"
       },
@@ -417,7 +461,7 @@
         "type": "historic_walkway",
         "description": "The stone foundation outline of the main gun platform overlooking the narrow Hudson River channel.",
         "price": {
-          "amount": 0.00,
+          "amount": 984.00,
           "currency": "USD",
           "basis": "free_access"
         }
@@ -428,9 +472,20 @@
         "type": "walking_path",
         "description": "A pedestrian footbridge suspension path that connects across the Popolopen Gorge to neighboring Fort Clinton.",
         "price": {
-          "amount": 0.00,
+          "amount": 226.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 321.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -495,7 +550,7 @@
     },
     "logistics": {
       "entry_fee": {
-        "amount": 0.00,
+        "amount": 261.00,
         "currency": "USD",
         "basis": "free_entry"
       },
@@ -513,7 +568,7 @@
         "type": "walking_path",
         "description": "An elevated stone rampart walkway offering unobstructed views of the Boston skyline and shipping lanes.",
         "price": {
-          "amount": 0.00,
+          "amount": 256.00,
           "currency": "USD",
           "basis": "free_access"
         }
@@ -524,9 +579,20 @@
         "type": "outdoor_common",
         "description": "The open grassy interior parade ground where soldiers drilled and defensive cannons were mounted.",
         "price": {
-          "amount": 0.00,
+          "amount": 451.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 215.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -608,7 +674,7 @@
         "type": "historic_walkway",
         "description": "An intricate system of underground mining and counter-mining tunnels built beneath the fort ditches to detect enemy saboteurs.",
         "price": {
-          "amount": 0.00,
+          "amount": 360.00,
           "currency": "USD",
           "basis": "included_with_tour"
         }
@@ -619,9 +685,20 @@
         "type": "walking_path",
         "description": "A scenic outer shoreline path tracing around the heavy granite sea wall batteries.",
         "price": {
-          "amount": 0.00,
+          "amount": 562.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 215.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -685,7 +762,7 @@
     },
     "logistics": {
       "entry_fee": {
-        "amount": 12.00,
+        "amount": 124.00,
         "currency": "USD",
         "basis": "includes_island_ferry_transport"
       },
@@ -703,7 +780,7 @@
         "type": "indoor_exhibit",
         "description": "Fully restored brick rooms displaying personal items, letters, and weapons recovered from the island site.",
         "price": {
-          "amount": 0.00,
+          "amount": 465.00,
           "currency": "USD",
           "basis": "included_with_ferry"
         }
@@ -714,9 +791,20 @@
         "type": "historic_walkway",
         "description": "A heavy wooden drawbridge path crossing over the deep tidal water moat circling the solid granite masonry walls.",
         "price": {
-          "amount": 0.00,
+          "amount": 411.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 211.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -781,7 +869,7 @@
     },
     "logistics": {
       "entry_fee": {
-        "amount": 5.00,
+        "amount": 521.00,
         "currency": "USD",
         "basis": "per_vehicle_parking_fee"
       },
@@ -799,7 +887,7 @@
         "type": "indoor_exhibit",
         "description": "Towering, hollow stone limestone walls of the original three-story soldiers' quarters left standing after a devastating historical explosion.",
         "price": {
-          "amount": 0.00,
+          "amount":226.00,
           "currency": "USD",
           "basis": "free_access"
         }
@@ -810,9 +898,20 @@
         "type": "walking_path",
         "description": "A deep grass ditch walkway that winds entirely around the massive star-angled defensive layout perimeter.",
         "price": {
-          "amount": 0.00,
+          "amount": 152.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 661.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -876,7 +975,7 @@
     },
     "logistics": {
       "entry_fee": {
-        "amount": 6.00,
+        "amount": 612.00,
         "currency": "USD",
         "basis": "per_vehicle_park_access_fee"
       },
@@ -894,7 +993,7 @@
         "type": "indoor_exhibit",
         "description": "A cold brick interior holding area featuring original metal bunks and historical military punishment logging books.",
         "price": {
-          "amount": 2.50,
+          "amount": 211.50,
           "currency": "USD",
           "basis": "per_person_fort_entry_fee"
         }
@@ -905,9 +1004,20 @@
         "type": "walking_path",
         "description": "An elevated brick-paved upper wall track featuring fully mounted 10-inch smoothbore Rodman artillery pieces.",
         "price": {
-          "amount": 0.00,
+          "amount": 515.00,
           "currency": "USD",
           "basis": "included_with_fort_entry"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 121.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -972,7 +1082,7 @@
     },
     "logistics": {
       "entry_fee": {
-        "amount": 4.00,
+        "amount": 511.00,
         "currency": "USD",
         "basis": "per_adult_ticket"
       },
@@ -990,7 +1100,7 @@
         "type": "historic_walkway",
         "description": "A subterranean network of stone-lined rifle galleries built into the outer ditch walls for flanking fire.",
         "price": {
-          "amount": 0.00,
+          "amount": 465.00,
           "currency": "USD",
           "basis": "included_with_admission"
         }
@@ -1001,9 +1111,20 @@
         "type": "walking_path",
         "description": "An elevated earthen and stone walkway along the top of the pentagonal walls, showcasing panoramic lake views.",
         "price": {
-          "amount": 0.00,
+          "amount": 515.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 301.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -1067,7 +1188,7 @@
     },
     "logistics": {
       "entry_fee": {
-        "amount": 20.00,
+        "amount": 522.00,
         "currency": "USD",
         "basis": "per_adult_ticket"
       },
@@ -1085,7 +1206,7 @@
         "type": "indoor_exhibit",
         "description": "A heavily fortified, chateau-like stone trading house built in 1726 designed to resist native and colonial sieges.",
         "price": {
-          "amount": 0.00,
+          "amount": 213.00,
           "currency": "USD",
           "basis": "included_with_admission"
         }
@@ -1096,9 +1217,20 @@
         "type": "walking_path",
         "description": "Massive outer stone earthworks constructed by British engineers to shield the inner courtyard from heavy artillery.",
         "price": {
-          "amount": 0.00,
+          "amount": 561.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 222.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -1190,6 +1322,17 @@
         "name": "The Hot Shot Furnace Platform",
         "type": "indoor_exhibit",
         "description": "A specialized brick kiln structure used to heat solid iron cannonballs to a red-hot glow before firing them at wooden ships.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -1290,6 +1433,17 @@
           "currency": "USD",
           "basis": "free_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -1384,6 +1538,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -1483,6 +1648,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -1577,6 +1753,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -1675,6 +1862,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -1769,6 +1967,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -1865,6 +2074,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -1963,6 +2183,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -2058,6 +2289,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -2155,6 +2397,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -2250,6 +2503,17 @@
           "currency": "USD",
           "basis": "free_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -2344,6 +2608,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -2441,6 +2716,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -2537,6 +2823,17 @@
           "currency": "USD",
           "basis": "free_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -2631,6 +2928,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -2727,6 +3035,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -2818,6 +3137,17 @@
         "name": "The Blacksmith Shop & Forge",
         "type": "indoor_exhibit",
         "description": "An operational historical trade shop where blacksmiths forge iron tools using 19th-century methods.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -2919,6 +3249,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -3014,6 +3355,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -3104,6 +3456,17 @@
         "name": "The Drawbridge & Gatehouse Exhibit",
         "type": "indoor_exhibit",
         "description": "The massive iron-reinforced wooden entryway featuring the original mechanical counterweights and winches.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -3204,6 +3567,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -3298,6 +3672,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -3397,6 +3782,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -3487,6 +3883,17 @@
         "name": "The Subterranean Warfare Tunnels",
         "type": "historic_walkway",
         "description": "A complex dark network of communication and blasting tunnels built directly beneath the main ramparts.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -3587,6 +3994,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -3682,6 +4100,17 @@
           "currency": "USD",
           "basis": "free_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -3776,6 +4205,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -3874,6 +4314,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -3968,6 +4419,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -4064,6 +4526,17 @@
           "currency": "EUR",
           "basis": "per_adult_guided_subterranean_tour"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -4159,6 +4632,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -4253,6 +4737,17 @@
           "amount": 0.00,
           "currency": "CAD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -4350,6 +4845,17 @@
           "currency": "JPY",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -4444,6 +4950,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -4540,6 +5057,17 @@
           "currency": "GBP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -4633,6 +5161,17 @@
         "price": {
           "amount": 0.00,
           "currency": "DKK",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -4729,6 +5268,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -4827,6 +5377,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -4924,6 +5485,17 @@
           "currency": "KRW",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -5019,6 +5591,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -5117,6 +5700,17 @@
           "currency": "COP",
           "basis": "included_with_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -5212,6 +5806,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -5309,6 +5914,17 @@
           "currency": "GBP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -5405,6 +6021,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -5500,6 +6127,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -5598,6 +6236,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -5691,6 +6340,17 @@
         "name": "The Vaulted Powder Chambers",
         "type": "indoor_exhibit",
         "description": "Thick-walled inside vaults displaying original weapons, maps, and iron tools recovered along the Caribbean coast.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -5795,6 +6455,17 @@
           "currency": "MXN",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -5890,6 +6561,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -5988,6 +6670,17 @@
           "currency": "EUR",
           "basis": "included_with_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -6084,6 +6777,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -6178,6 +6882,17 @@
           "amount": 0.00,
           "currency": "CLP",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -6277,6 +6992,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -6372,6 +7098,17 @@
           "amount": 0.00,
           "currency": "ZAR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -6469,6 +7206,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -6565,6 +7313,17 @@
           "currency": "VES",
           "basis": "free_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -6659,6 +7418,17 @@
           "amount": 0.00,
           "currency": "CAD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -6758,6 +7528,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -6853,6 +7634,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -6947,6 +7739,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -7046,6 +7849,17 @@
           "currency": "CLP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -7140,6 +7954,17 @@
           "amount": 0.00,
           "currency": "VES",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -7238,6 +8063,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -7333,6 +8169,17 @@
           "currency": "CLP",
           "basis": "included_with_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -7423,6 +8270,17 @@
         "name": "The Inner Gallery Casemates",
         "type": "indoor_exhibit",
         "description": "Thick brick-arched storage chambers displaying original spanish weapon collections, cannons, and military charts.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -7524,6 +8382,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -7619,6 +8488,17 @@
         "price": {
           "amount": 0.00,
           "currency": "EUR",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -7719,6 +8599,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -7814,6 +8705,17 @@
           "currency": "CLP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -7904,6 +8806,17 @@
         "name": "The Vaulted Officers' Barracks",
         "type": "indoor_exhibit",
         "description": "A long row of brick-arched interior chambers tracking 18th-century Spanish colonial military equipment timelines.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -8005,6 +8918,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -8098,6 +9022,17 @@
         "price": {
           "amount": 0.00,
           "currency": "CLP",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -8197,6 +9132,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -8292,6 +9238,17 @@
           "currency": "CLP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -8383,6 +9340,17 @@
         "name": "The Subterranean Countermine Maze",
         "type": "historic_walkway",
         "description": "An intricate system of dark underground galleries carved into the bedrock designed to detect enemy digging.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -8484,6 +9452,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -8577,6 +9556,17 @@
         "price": {
           "amount": 0.00,
           "currency": "CLP",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -8676,6 +9666,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -8771,6 +9772,17 @@
           "currency": "CLP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -8861,6 +9873,17 @@
         "name": "The Subterranean Countermine Maze",
         "type": "historic_walkway",
         "description": "An intricate system of dark underground galleries carved into the bedrock designed to detect enemy digging.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -8961,6 +9984,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -9054,6 +10088,17 @@
         "price": {
           "amount": 0.00,
           "currency": "CLP",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -9152,6 +10197,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -9247,6 +10303,17 @@
           "currency": "CLP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -9337,6 +10404,17 @@
         "name": "The Subterranean Countermine Maze",
         "type": "historic_walkway",
         "description": "An intricate system of dark underground galleries carved into the bedrock designed to detect enemy digging.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -9437,6 +10515,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -9530,6 +10619,17 @@
         "price": {
           "amount": 0.00,
           "currency": "CLP",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -9627,6 +10727,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -9721,6 +10832,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -9817,6 +10939,17 @@
           "amount": 0.00,
           "currency": "KRW",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -9916,6 +11049,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -10014,6 +11158,17 @@
           "currency": "COP",
           "basis": "included_with_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -10108,6 +11263,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -10205,6 +11371,17 @@
           "currency": "GBP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -10300,6 +11477,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -10394,6 +11582,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -10491,6 +11690,17 @@
           "currency": "EUR",
           "basis": "per_adult_guided_subterranean_tour"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -10586,6 +11796,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -10684,6 +11905,17 @@
           "currency": "CAD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -10780,6 +12012,17 @@
           "currency": "JPY",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -10874,6 +12117,17 @@
           "amount": 0.00,
           "currency": "EUR",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -10970,6 +12224,17 @@
           "currency": "GBP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -11063,6 +12328,17 @@
         "price": {
           "amount": 0.00,
           "currency": "DKK",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -11160,6 +12436,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -11255,6 +12542,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -11352,6 +12650,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -11446,6 +12755,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -11542,6 +12862,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -11640,6 +12971,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -11735,6 +13077,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -11829,6 +13182,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -11926,6 +13290,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -12020,6 +13395,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "included_with_fort_entry"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -12118,6 +13504,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -12214,6 +13611,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -12309,6 +13717,17 @@
           "currency": "USD",
           "basis": "included_with_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -12399,6 +13818,17 @@
         "name": "The Inner Gallery Casemates",
         "type": "indoor_exhibit",
         "description": "Thick brick-arched storage chambers displaying original spanish weapon collections, cannons, and military charts.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -12501,6 +13931,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -12594,6 +14035,17 @@
         "price": {
           "amount": 0.00,
           "currency": "EUR",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -12695,6 +14147,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -12790,6 +14253,17 @@
           "currency": "CLP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -12880,6 +14354,17 @@
         "name": "The Vaulted Officers' Barracks",
         "type": "indoor_exhibit",
         "description": "A long row of brick-arched interior chambers tracking 18th-century Spanish colonial military equipment timelines.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -12980,6 +14465,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -13073,6 +14569,17 @@
         "price": {
           "amount": 0.00,
           "currency": "CLP",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -13172,6 +14679,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -13267,6 +14785,17 @@
           "currency": "CLP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -13358,6 +14887,17 @@
         "name": "The Subterranean Countermine Maze",
         "type": "historic_walkway",
         "description": "An intricate system of dark underground galleries carved into the bedrock designed to detect enemy digging.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -13459,6 +14999,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -13552,6 +15103,17 @@
         "price": {
           "amount": 0.00,
           "currency": "CLP",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
           "basis": "included_with_admission"
         }
       }
@@ -13651,6 +15213,17 @@
           "currency": "EUR",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -13747,6 +15320,17 @@
           "currency": "CLP",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -13840,6 +15424,17 @@
         "name": "The Subterranean Countermine Maze",
         "type": "historic_walkway",
         "description": "An intricate system of dark underground galleries carved into the bedrock designed to detect enemy digging.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -13942,6 +15537,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -14036,6 +15642,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -14132,6 +15749,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -14227,6 +15855,17 @@
           "currency": "USD",
           "basis": "free_admission"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -14321,6 +15960,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -14418,6 +16068,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -14513,6 +16174,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],
@@ -14610,6 +16282,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -14705,6 +16388,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -14798,6 +16492,17 @@
         "name": "The Blacksmith Shop & Forge",
         "type": "indoor_exhibit",
         "description": "An operational historical trade shop where blacksmiths forge iron tools using 19th-century methods.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -14899,6 +16604,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -14994,6 +16710,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -15086,6 +16813,17 @@
         "name": "The Drawbridge & Gatehouse Exhibit",
         "type": "indoor_exhibit",
         "description": "The massive iron-reinforced wooden entryway featuring the original mechanical counterweights and winches.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
         "price": {
           "amount": 0.00,
           "currency": "USD",
@@ -15186,6 +16924,17 @@
           "currency": "USD",
           "basis": "free_access"
         }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
+        }
       }
     ],
     "historical_context": {
@@ -15280,6 +17029,17 @@
           "amount": 0.00,
           "currency": "USD",
           "basis": "free_access"
+        }
+      },
+      {
+        "sub_loc_id": "sub_03",
+        "name": "The King's Garden",
+        "type": "outdoor_garden",
+        "description": "A beautifully restored colonial brick-walled garden originally planted by British garrison soldiers.",
+        "price": {
+          "amount": 0.00,
+          "currency": "USD",
+          "basis": "included_with_admission"
         }
       }
     ],

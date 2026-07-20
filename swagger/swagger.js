@@ -45,7 +45,7 @@ const swaggerOptions = {
   apis: [
     path.resolve(__dirname, '../docs/auth.swagger.js'),
     path.resolve(__dirname, '../docs/location.swagger.js') ,
-    path.resolve(__dirname, '../docs/product.swagger.js'),
+    path.resolve(__dirname, '../docs/product.swagger.js')
   ],  
 };
 
