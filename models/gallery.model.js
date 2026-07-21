@@ -12,6 +12,11 @@ const gallerySchema = new mongoose.Schema(
       ref: "Trip", // Links to your Trip collection from the 1st API
       required: [true, "An image upload must be linked to a specific trip context."]
     },
+    collectionId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Collection",
+      default: null
+    },
     imageUrl: {
       type: String,
       required: [true, "The physical image storage URL path string is required."]

@@ -7,9 +7,9 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Simple Node.js API',
+      title: 'TrackMate API',
       version: '1.0.0',
-      description: 'A basic Express API documented with Swagger',
+      description: 'TrackMate backend API — auth, locations, trips, and gallery',
     },
     components: {
       securitySchemes: {
@@ -44,9 +44,9 @@ const swaggerOptions = {
   },
   apis: [
     path.resolve(__dirname, '../docs/auth.swagger.js'),
-    path.resolve(__dirname, '../docs/location.swagger.js') ,
-    path.resolve(__dirname, '../docs/product.swagger.js')
-  ],  
+    path.resolve(__dirname, '../docs/location.swagger.js'),
+    path.resolve(__dirname, '../docs/gallery.swagger.js'),
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
