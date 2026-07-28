@@ -1,0 +1,242 @@
+[
+  {
+    "user_name": "Aarav Sharma",
+    "posted_date": "2026-07-27T14:32:00Z",
+    "review": "Absolute game-changer! The cliffside view of the ocean is breathtaking, and the trail was exceptionally well-maintained.",
+    "rating": 5,
+    "likes": 42,
+    "user_image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Priya Patel",
+    "posted_date": "2026-07-27T11:15:00Z",
+    "review": "Good overall park, but I experienced a few frustrating issues trying to find working restrooms near the central plaza.",
+    "rating": 3,
+    "likes": 12,
+    "user_image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Liam Johnson",
+    "posted_date": "2026-07-26T18:45:00Z",
+    "review": "Resort staff are top-notch. Had an issue with my room reservation and they upgraded us in less than ten minutes.",
+    "rating": 5,
+    "likes": 28,
+    "user_image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Sophia Martinez",
+    "posted_date": "2026-07-26T09:20:00Z",
+    "review": "Not worth the ticket price in my opinion. Basic historical exhibits are locked behind an expensive guided tour paywall.",
+    "rating": 2,
+    "likes": 65,
+    "user_image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Rohan Mehta",
+    "posted_date": "2026-07-25T21:10:00Z",
+    "review": "Blazing fast express elevators at the observation deck. Even with massive crowds, we got to the top instantly without lag.",
+    "rating": 5,
+    "likes": 19,
+    "user_image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Emma Wilson",
+    "posted_date": "2026-07-25T16:05:00Z",
+    "review": "Decent botanical garden, but the walking paths desperately need better lighting. Hard to see at dusk.",
+    "rating": 4,
+    "likes": 8,
+    "user_image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Vikram Singh",
+    "posted_date": "2026-07-24T13:50:00Z",
+    "review": "Terrible amusement park experience. The main roller coaster constantly breaks down whenever I try to get in line.",
+    "rating": 1,
+    "likes": 31,
+    "user_image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Olivia Brown",
+    "posted_date": "2026-07-24T10:30:00Z",
+    "review": "Super smooth check-in process at the hotel. Had my family settled in their beachside suite within fifteen minutes.",
+    "rating": 5,
+    "likes": 14,
+    "user_image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Ananya Gupta",
+    "posted_date": "2026-07-23T22:00:00Z",
+    "review": "It gets the job done for a quick pit stop, but the cafe interior looks a bit outdated compared to modern coffee shops.",
+    "rating": 3,
+    "likes": 5,
+    "user_image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Noah Davis",
+    "posted_date": "2026-07-23T15:40:00Z",
+    "review": "The guided tour features at the museum alone are worth every single penny. Huge educational boost for our group.",
+    "rating": 5,
+    "likes": 50,
+    "user_image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Neha Joshi",
+    "posted_date": "2026-07-22T12:15:00Z",
+    "review": "Trail map signage is poorly written and confusing for beginners. Took me forever to find the parking exit.",
+    "rating": 2,
+    "likes": 22,
+    "user_image": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Lucas Miller",
+    "posted_date": "2026-07-22T08:00:00Z",
+    "review": "Fantastic value for money. The public beach offers more than enough space for sports and relaxation.",
+    "rating": 5,
+    "likes": 37,
+    "user_image": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Kavya Iyer",
+    "posted_date": "2026-07-21T19:25:00Z",
+    "review": "Elevators move slowly during peak evening hours at the mall, which can be quite annoying when carrying heavy bags.",
+    "rating": 3,
+    "likes": 11,
+    "user_image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Mason Anderson",
+    "posted_date": "2026-07-21T14:10:00Z",
+    "review": "Brilliant security features at the historical fortress. Gives me total peace of mind exploring the artifact vaults.",
+    "rating": 5,
+    "likes": 16,
+    "user_image": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Zara Khan",
+    "posted_date": "2026-07-20T11:45:00Z",
+    "review": "Canceled my gym membership at this sports club after three months. Too many broken promises regarding the pool renovations.",
+    "rating": 1,
+    "likes": 48,
+    "user_image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Ethan Thomas",
+    "posted_date": "2026-07-20T07:30:00Z",
+    "review": "Very clean layout at the airport lounge and seamless integration with boarding gates and transit shuttles.",
+    "rating": 4,
+    "likes": 9,
+    "user_image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Divya Reddy",
+    "posted_date": "2026-07-19T20:15:00Z",
+    "review": "The resort's resort-wide map directory is extremely accurate. Love how easy it is to find the private beach paths.",
+    "rating": 5,
+    "likes": 25,
+    "user_image": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "James White",
+    "posted_date": "2026-07-19T15:00:00Z",
+    "review": "Mediocre experience at the campsite. Park rangers took nearly three days just to reply to my permit inquiry.",
+    "rating": 2,
+    "likes": 17,
+    "user_image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Siddharth Rao",
+    "posted_date": "2026-07-18T12:35:00Z",
+    "review": "Phenomenal national park! Weekly trail updates keep adding genuinely useful scenic viewpoints instead of tourist traps.",
+    "rating": 5,
+    "likes": 60,
+    "user_image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Harper Lee",
+    "posted_date": "2026-07-18T09:10:00Z",
+    "review": "Good wildlife sanctuary, but the audio guide announcements are overly loud and hard to tune out.",
+    "rating": 4,
+    "likes": 4,
+    "user_image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Kabir Verma",
+    "posted_date": "2026-07-17T17:50:00Z",
+    "review": "The water park completely closed our favorite slides during a maintenance check last Tuesday. Zero warning given at the gate.",
+    "rating": 1,
+    "likes": 83,
+    "user_image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Evelyn Harris",
+    "posted_date": "2026-07-17T13:20:00Z",
+    "review": "Super lightweight and compact hiking gear shop. Runs smoothly with great service even during peak weekend hours.",
+    "rating": 5,
+    "likes": 21,
+    "user_image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Aditya Nair",
+    "posted_date": "2026-07-16T10:05:00Z",
+    "review": "Parking structure pricing is confusing. Hidden fees appeared on my exit ticket that weren't mentioned on the billboard.",
+    "rating": 2,
+    "likes": 34,
+    "user_image": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Mia Clark",
+    "posted_date": "2026-07-16T08:40:00Z",
+    "review": "Incredible customization options for camping plots. You can tailor pretty much every site layout to your exact group size.",
+    "rating": 5,
+    "likes": 29,
+    "user_image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Arjun Kapoor",
+    "posted_date": "2026-07-15T21:30:00Z",
+    "review": "Decent local food market, but lacks advanced seating options that large families actually need.",
+    "rating": 3,
+    "likes": 13,
+    "user_image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Charlotte Lewis",
+    "posted_date": "2026-07-15T16:15:00Z",
+    "review": "Best vacation resort purchase I've made this year. Streamlined our entire spa and dining reservation process.",
+    "rating": 5,
+    "likes": 55,
+    "user_image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Karan Malhotra",
+    "posted_date": "2026-07-14T14:00:00Z",
+    "review": "Theme park monorail freezes randomly whenever switching between heavy commuter tracks. Needs a stability patch ASAP.",
+    "rating": 2,
+    "likes": 20,
+    "user_image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Amelia Walker",
+    "posted_date": "2026-07-14T11:20:00Z",
+    "review": "Very intuitive museum layout for beginners. My travel group picked up the audio tour in less than a day without a guide.",
+    "rating": 4,
+    "likes": 15,
+    "user_image": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Devansh Sen",
+    "posted_date": "2026-07-13T18:40:00Z",
+    "review": "Exceptional ski resort with zero lift downtime so far. Highly reliable for mission-critical powder chasing.",
+    "rating": 5,
+    "likes": 38,
+    "user_image": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "user_name": "Harper Hall",
+    "posted_date": "2026-07-13T09:10:00Z",
+    "review": "Too many ticket booth pop-ups prompting you to upgrade to the VIP lounge pass. Gets annoying very quickly.",
+    "rating": 3,
+    "likes": 27,
+    "user_image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80"
+  }
+]

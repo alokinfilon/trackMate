@@ -206,3 +206,51 @@
 1784529958050:::1 GET: /api/trips/analytics/chart-stats
 
 1784531307295:::1 PATCH: /api/trips/6a59eacf20a014ca5f258047/update-status
+
+1784618181976:::1 POST: /api/gallery/collections
+
+1784618214959:::1 GET: /api/gallery/6a59eacf20a014ca5f258047
+
+1784618224933:::1 GET: /api/gallery/6a59eacf20a014ca5f258047
+
+1784618296316:::1 POST: /api/gallery/collections
+
+1784618309120:::1 POST: /api/gallery/collections
+
+1784618339350:::1 POST: /api/gallery/collections
+
+1784618408812:::1 POST: /api/trips
+
+1784618421685:::1 POST: /api/trips
+
+1784618443122:::1 POST: /api/gallery/collections
+
+1784711831248:::1 GET: /api-docs/
+
+1784711831318:::1 GET: /api-docs/swagger-ui.css
+
+1784711831322:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1784711831323:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1784711831324:::1 GET: /api-docs/swagger-ui-init.js
+
+1784712376049:::1 GET: /api-docs/
+
+1784712376136:::1 GET: /api-docs/swagger-ui.css
+
+1784712376144:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1784712376144:::1 GET: /api-docs/swagger-ui-init.js
+
+1784712376145:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1785240649433:::1 GET: /api/faqs
+
+1785240668135:::1 GET: /api/reviews
+
+1785240681627:::1 GET: /api/travel-preferences
+
+1785240705594:::1 GET: /api/privacy-policy
+
+1785240763528:::1 GET: /api/terms

@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "question": "What is TrackMate and how does it work?",
+    "answer": "TrackMate is your all-in-one smart travel companion app designed to simplify trip planning, itinerary management, and navigation. It works by centralizing all your travel details—flights, hotels, activities, and maps—into a single collaborative dashboard where you can organize, customize, and track your entire journey in real-time.",
+    "category": "General",
+    "slug": "what-is-trackmate",
+    "created_at": "2026-07-28T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "question": "How can I start planning a trip?",
+    "answer": "Starting a trip is simple! Tap the '+' or 'New Trip' button on your home dashboard, enter your destination, select your travel dates, and choose whether you want to build your itinerary from scratch or use our AI-powered travel recommendations to generate a customized draft instantly.",
+    "category": "Planning",
+    "slug": "how-to-start-planning-a-trip",
+    "created_at": "2026-07-28T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "question": "Is TrackMate available for free use?",
+    "answer": "Yes! TrackMate offers a robust free tier that includes core itinerary planning, map integration, and basic trip organization features. For advanced perks like offline maps, unlimited AI suggestions, and advanced group collaboration tools, we also offer premium subscription plans.",
+    "category": "Pricing",
+    "slug": "is-trackmate-free",
+    "created_at": "2026-07-28T00:00:00Z"
+  },
+  {
+    "id": 4,
+    "question": "How do I plan a group trip on TrackMate?",
+    "answer": "Planning a group trip is easy. Open your trip, tap on the 'Collaborators' or 'Share' icon, and invite your friends via email or a unique sharing link. Once they join, everyone in the group can view the itinerary, vote on activities, add custom suggestions, and split expenses together in real time.",
+    "category": "Collaboration",
+    "slug": "how-to-plan-group-trip",
+    "created_at": "2026-07-28T00:00:00Z"
+  },
+  {
+    "id": 5,
+    "question": "Does TrackMate offer offline support?",
+    "answer": "Yes, TrackMate offers offline support for premium users (and select cached itineraries for free users). You can download your complete travel itinerary, maps, booking confirmations, and notes directly to your device so you can access them even without an active cellular or Wi-Fi connection.",
+    "category": "Features",
+    "slug": "offline-support",
+    "created_at": "2026-07-28T00:00:00Z"
+  },
+  {
+    "id": 6,
+    "question": "Can I export my travel itinerary?",
+    "answer": "Absolutely! You can export your travel itinerary at any time. TrackMate allows you to export your plans as a PDF document, sync events directly to your Google or Apple Calendar, or share a clean web link with family and friends who don't have the app.",
+    "category": "Features",
+    "slug": "export-itinerary",
+    "created_at": "2026-07-28T00:00:00Z"
+  },
+  {
+    "id": 7,
+    "question": "How does TrackMate suggest new places?",
+    "answer": "TrackMate uses an intelligent recommendation engine combined with popular travel data, trending local spots, and your personal travel preferences. As you add interests (such as food, adventure, history, or relaxation) or browse a destination, the app curates tailored recommendations and hidden gems just for you.",
+    "category": "Discover",
+    "slug": "how-suggestions-work",
+    "created_at": "2026-07-28T00:00:00Z"
+  },
+  {
+    "id": 8,
+    "question": "Can I add custom locations myself?",
+    "answer": "Yes, you have full control over your itinerary. If a specific restaurant, hidden viewpoint, or custom spot isn't showing up in our database, you can easily drop a pin on the map, input custom GPS coordinates, or manually type in the name, address, and notes to add it directly to your day-by-day plan.",
+    "category": "Customization",
+    "slug": "add-custom-locations",
+    "created_at": "2026-07-28T00:00:00Z"
+  }
+]

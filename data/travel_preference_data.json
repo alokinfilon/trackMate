@@ -1,0 +1,117 @@
+[
+  {
+    "category": "fav_country",
+    "options": [
+      { "id": "in", "label": "India" },
+      { "id": "jp", "label": "Japan" },
+      { "id": "ch", "label": "Switzerland" },
+      { "id": "us", "label": "United States" },
+      { "id": "it", "label": "Italy" },
+      { "id": "th", "label": "Thailand" },
+      { "id": "fr", "label": "France" },
+      { "id": "ae", "label": "United Arab Emirates" },
+      { "id": "gb", "label": "United Kingdom" },
+      { "id": "au", "label": "Australia" },
+      { "id": "sg", "label": "Singapore" },
+      { "id": "ca", "label": "Canada" }
+    ]
+  },
+  {
+    "category": "dream_destination",
+    "options": [
+      { "id": "is", "label": "Iceland" },
+      { "id": "nz", "label": "New Zealand" },
+      { "id": "no", "label": "Norway (Northern Lights)" },
+      { "id": "gr", "label": "Greece (Santorini)" },
+      { "id": "eg", "label": "Egypt" },
+      { "id": "mv", "label": "Maldives" },
+      { "id": "za", "label": "South Africa (Safari)" },
+      { "id": "pe", "label": "Peru (Machu Picchu)" },
+      { "id": "br", "label": "Brazil (Rio de Janeiro)" },
+      { "id": "at", "label": "Austria (Vienna & Alps)" },
+      { "id": "cr", "label": "Costa Rica" },
+      { "id": "fi", "label": "Finland (Lapland)" }
+    ]
+  },
+  {
+    "category": "travel_budget",
+    "options": [
+      { "id": "tier_1", "label": "0 - 5,000 INR (Budget / Day trip)" },
+      { "id": "tier_2", "label": "5,000 - 15,000 INR (Weekend getaway)" },
+      { "id": "tier_3", "label": "15,000 - 40,000 INR (Short domestic holiday)" },
+      { "id": "tier_4", "label": "40,000 - 1,00,000 INR (Standard vacation / Budget international)" },
+      { "id": "tier_5", "label": "1,00,000 - 2,50,000 INR (Comfortable international trip)" },
+      { "id": "tier_6", "label": "2,50,000+ INR (Luxury / Premium experience)" },
+      { "id": "custom", "label": "Custom Budget (User defined)" }
+    ]
+  },
+  {
+    "category": "trip_type_preference",
+    "options": [
+      { "id": "solo", "label": "Solo Travel" },
+      { "id": "couple", "label": "Couple / Romantic" },
+      { "id": "family", "label": "Family with Kids" },
+      { "id": "friends", "label": "Group of Friends" },
+      { "id": "business", "label": "Business & Leisure (Bleisure)" }
+    ]
+  },
+  {
+    "category": "travel_history",
+    "options": [
+      { "id": "beginner", "label": "Beginner (Mostly domestic)" },
+      { "id": "occasional", "label": "Occasional (1-2 international trips)" },
+      { "id": "frequent", "label": "Frequent Explorer (3+ trips a year)" },
+      { "id": "nomad", "label": "Digital Nomad / Full-time traveler" }
+    ]
+  },
+  {
+    "category": "language_spoken",
+    "options": [
+      { "id": "en", "label": "English" },
+      { "id": "es", "label": "Spanish" },
+      { "id": "hi", "label": "Hindi" },
+      { "id": "fr", "label": "French" },
+      { "id": "ja", "label": "Japanese" },
+      { "id": "de", "label": "German" }
+    ]
+  },
+  {
+    "category": "interest_hobbies",
+    "options": [
+      { "id": "history", "label": "History & Culture" },
+      { "id": "adventure", "label": "Adventure & Hiking" },
+      { "id": "food", "label": "Food & Culinary Tours" },
+      { "id": "nature", "label": "Nature & Wildlife" },
+      { "id": "nightlife", "label": "Nightlife & Entertainment" },
+      { "id": "relaxation", "label": "Beaches & Relaxation" }
+    ]
+  },
+  {
+    "category": "seasonal_preference",
+    "options": [
+      { "id": "winter", "label": "Winter / Snow & Skiing" },
+      { "id": "summer", "label": "Summer / Sun & Beaches" },
+      { "id": "spring", "label": "Spring / Blossoms & Mild Weather" },
+      { "id": "autumn", "label": "Autumn / Fall Foliage" }
+    ]
+  },
+  {
+    "category": "travel_frequency",
+    "options": [
+      { "id": "weekly", "label": "Weekly" },
+      { "id": "monthly", "label": "Monthly" },
+      { "id": "frequently", "label": "Frequently" },
+      { "id": "2_in_3_months", "label": "2 times in 3 months" },
+      { "id": "2_in_6_months", "label": "2 times in 6 months" },
+      { "id": "rarely", "label": "Once a year or less" }
+    ]
+  },
+  {
+    "category": "travel_preference",
+    "options": [
+      { "id": "relaxed", "label": "Relaxed & Slow-paced" },
+      { "id": "balanced", "label": "Balanced (Sightseeing + Downtime)" },
+      { "id": "fast", "label": "Action-packed & Fast-paced" }
+    ]
+  }
+]

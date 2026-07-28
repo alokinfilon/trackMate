@@ -20,8 +20,9 @@ const { logReqRes } = require("./middleware");
 const { connectMongoDb } = require("./database/connection");
 
 const authRouter = require("./routes/auth");
-const locationRoutes = require("./routes/locationRoutes");       
-const tripRoutes = require("./routes/trip.routes"); // ✅ Clean import of trip routes
+const locationRoutes = require("./routes/locationRoutes");          
+const tripRoutes = require("./routes/trip.routes"); 
+const apiRoutes = require("./routes/apiRoutes"); // ✅ Import your new general app routes (FAQs, reviews, preferences, policies)
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger/swagger');
@@ -47,9 +48,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/auth", authRouter); 
 app.use("/locations", locationRoutes);
 app.use("/api/gallery", galleryRoutes);
-// ✅ This single line maps your trip routes correctly. 
-// ❌ The 'router.post' and 'router.get' lines have been safely removed from here.
 app.use("/api/trips", tripRoutes); 
+
+app.use("/api", apiRoutes); 
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);    
