@@ -8,11 +8,13 @@ const {
   whoami,
   refreshToken,
   auth0LoginOrSignup,
-  getProfile,     // ✅ Imported
-  updateProfile   // ✅ Imported
+  getProfile,     
+  updateProfile,
+  getPreferences,   // ✅ Imported preferences getter
+  updatePreferences // ✅ Imported preferences updater
 } = require("../controllers/auth");
 const validator = require("../middleware/validator");
-const { uploadSingle } = require("../utils/cloudinary"); // ✅ Import Cloudinary upload middleware
+const { uploadSingle } = require("../utils/cloudinary"); 
 
 router
   .route("/register")
@@ -38,7 +40,7 @@ router
   .route("/whoami")
   .get(passport.authenticate(["jwt", "basic"], { session: false }), whoami);
 
-// ✅ NEW: Profile Management Endpoints
+// Profile Management Endpoints
 router
   .route("/profile")
   .get(
@@ -47,8 +49,20 @@ router
   )
   .put(
     passport.authenticate(["jwt", "basic"], { session: false }), 
-    uploadSingle, // Expects multipart/form-data with field name 'image'
+    uploadSingle, 
     updateProfile
+  );
+
+// ✅ NEW: Travel Preferences Management Endpoints
+router
+  .route("/preferences")
+  .get(
+    passport.authenticate(["jwt", "basic"], { session: false }), 
+    getPreferences
+  )
+  .put(
+    passport.authenticate(["jwt", "basic"], { session: false }), 
+    updatePreferences
   );
 
 module.exports = router;

@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       sparse: true,
     },
-    // --- New Profile Fields Added Here ---
+    // --- Profile Fields ---
     full_name: {
       type: String,
       default: "",
@@ -41,6 +41,19 @@ const userSchema = new mongoose.Schema(
     user_image: {
       type: String,
       default: "",
+    },
+    // --- Travel Preferences Fields (Multi-select arrays) ---
+    preferences: {
+      fav_country: [{ type: String, trim: true }],
+      dream_destination: [{ type: String, trim: true }],
+      travel_budget: [{ type: String, trim: true }],
+      trip_type_preference: [{ type: String, trim: true }],
+      travel_history: [{ type: String, trim: true }],
+      language_spoken: [{ type: String, trim: true }],
+      interest_hobbies: [{ type: String, trim: true }],
+      seasonal_preference: [{ type: String, trim: true }],
+      travel_frequency: [{ type: String, trim: true }],
+      travel_preference: [{ type: String, trim: true }],
     },
   },
   { timestamps: true }
@@ -63,10 +76,9 @@ userSchema.set('toJSON', {
     delete returnedObject._id;
     delete returnedObject.__v;
     delete returnedObject.password;
-    delete returnedObject.confirmPassword;  
+    delete returnedObject.confirmPassword;
     delete returnedObject.createdAt;
-    delete returnedObject.updatedAt;
-    // Note: Kept createdAt and updatedAt or you can delete them if preferred
+    delete returnedObject.updatedAt;  
   }
 });
 

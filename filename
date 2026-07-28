@@ -270,3 +270,11 @@
 1785242292039:::1 PUT: /auth/profile
 
 1785242302860:::1 GET: /auth/profile
+
+1785244071293:::1 GET: /auth/preferences
+
+1785244122100:::1 GET: /auth/preferences
+
+1785244155898:::1 PUT: /auth/preferences
+
+1785244163231:::1 GET: /auth/preferences

@@ -289,6 +289,57 @@ async function updateProfile(req, res) {
   }
 }
 
+// Get User Preferences
+async function getPreferences(req, res) {
+  try {
+    const user = await User.findById(req.user.id).select("preferences");
+    if (!user) {
+      return res.status(404).json({ success: false, error: "User not found." });
+    }
+    return res.status(200).json({
+      success: true,
+      data: user.preferences || {},
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+}
+
+// Update / Save User Preferences (Supports multi-step or full-payload saves)
+async function updatePreferences(req, res) {
+  try {
+    const userId = req.user.id;
+    const incomingPreferences = req.body; // e.g. { fav_country: ["in", "jp"] }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, error: "User not found." });
+    }
+
+    // Initialize preferences object if it doesn't exist
+    if (!user.preferences) {
+      user.preferences = {};
+    }
+
+    // Merge or update incoming preference categories
+    Object.keys(incomingPreferences).forEach((category) => {
+      if (Array.isArray(incomingPreferences[category])) {
+        user.preferences[category] = incomingPreferences[category];
+      }
+    });
+
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Preferences updated successfully.",
+      data: user.preferences,
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+}
+
 module.exports = {
   createUser,
   listUsers,
@@ -297,5 +348,7 @@ module.exports = {
   refreshToken,
   auth0LoginOrSignup, 
   getProfile,
-  updateProfile
+  updateProfile,
+  getPreferences,
+  updatePreferences
 };
