@@ -26,7 +26,22 @@ const userSchema = new mongoose.Schema(
       type: String,
       unique: true,
       sparse: true,
-    }
+    },
+    // --- New Profile Fields Added Here ---
+    full_name: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    country: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    user_image: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
@@ -50,7 +65,8 @@ userSchema.set('toJSON', {
     delete returnedObject.password;
     delete returnedObject.confirmPassword;  
     delete returnedObject.createdAt;
-    delete returnedObject.updatedAt;
+    delete returnedObject.updatedAt;
+    // Note: Kept createdAt and updatedAt or you can delete them if preferred
   }
 });
 

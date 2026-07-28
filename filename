@@ -254,3 +254,19 @@
 1785240705594:::1 GET: /api/privacy-policy
 
 1785240763528:::1 GET: /api/terms
+
+1785241990374:::1 GET: /api-docs/
+
+1785241990465:::1 GET: /api-docs/swagger-ui.css
+
+1785241990474:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1785241990476:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1785241990477:::1 GET: /api-docs/swagger-ui-init.js
+
+1785242185275:::1 GET: /auth/profile
+
+1785242292039:::1 PUT: /auth/profile
+
+1785242302860:::1 GET: /auth/profile

@@ -237,6 +237,58 @@ async function proceedWithSync(decodedAuth0User, res) {
   }
 }
 
+
+async function getProfile(req, res) {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User profile not found." });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: user,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
+
+async function updateProfile(req, res) {
+  try {
+    const userId = req.user.id;
+    const { full_name, country } = req.body;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User profile not found." });
+    }
+
+    if (full_name !== undefined) {
+      user.full_name = String(full_name).trim();
+    }
+    if (country !== undefined) {
+      user.country = String(country).trim();
+    }
+
+    if (req.file && req.file.path) {
+      user.user_image = req.file.path;
+    }
+
+    const updatedUser = await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Profile updated successfully.",
+      data: updatedUser,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
+
 module.exports = {
   createUser,
   listUsers,
@@ -244,4 +296,6 @@ module.exports = {
   whoami,
   refreshToken,
   auth0LoginOrSignup, 
+  getProfile,
+  updateProfile
 };
