@@ -278,3 +278,29 @@
 1785244155898:::1 PUT: /auth/preferences
 
 1785244163231:::1 GET: /auth/preferences
+
+1785319460911:::1 GET: /api-docs/
+
+1785319460983:::1 GET: /api-docs/swagger-ui.css
+
+1785319460983:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1785319460986:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1785319460986:::1 GET: /api-docs/swagger-ui-init.js
+
+1785319925794:::1 PUT: /auth/password
+
+1785319952713:::1 PUT: /auth/password
+
+1785319992853:::1 PUT: /auth/password
+
+1785320026014:::1 GET: /api-docs/
+
+1785320026121:::1 GET: /api-docs/swagger-ui.css
+
+1785320026126:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1785320026126:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1785320026127:::1 GET: /api-docs/swagger-ui-init.js

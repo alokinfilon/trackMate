@@ -194,4 +194,38 @@
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/User'
+ *
+ * /auth/password:
+ *   put:
+ *     summary: Update the authenticated user's password
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *       - basicAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - currentPassword
+ *               - newPassword
+ *               - confirmNewPassword
+ *             properties:
+ *               currentPassword:
+ *                 type: string
+ *               newPassword:
+ *                 type: string
+ *               confirmNewPassword:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Password updated successfully
+ *       400:
+ *         description: Invalid request or Auth0-linked account
+ *       401:
+ *         description: Current password is incorrect
+ *       404:
+ *         description: User not found
  */

@@ -77,6 +77,32 @@ const refreshTokenValidationRules = (req, res, next) => {
   next();
 };
 
+const updatePasswordValidationRules = (req, res, next) => {
+  const { currentPassword, newPassword, confirmNewPassword } = req.body;
+  const errors = [];
+
+  if (!currentPassword) {
+    errors.push({ currentPassword: "Current password is required" });
+  }
+
+  if (!newPassword) {
+    errors.push({ newPassword: "New password is required" });
+  } else if (typeof newPassword !== "string") {
+    errors.push({ newPassword: "New password must be a string" });
+  }
+
+  if (!confirmNewPassword) {
+    errors.push({ confirmNewPassword: "Confirm new password is required" });
+  } else if (typeof confirmNewPassword !== "string") {
+    errors.push({ confirmNewPassword: "Confirm new password must be a string" });
+  } else if (newPassword && confirmNewPassword !== newPassword) {
+    errors.push({ confirmNewPassword: "New passwords do not match" });
+  }
+
+  req.validationErrors = errors;
+  next();
+};
+
 const validate = (req, res, next) => {
   const errors = req.validationErrors || [];
 
@@ -91,6 +117,7 @@ module.exports = {
   userValidationRules,
   loginValidationRules,
   refreshTokenValidationRules,
+  updatePasswordValidationRules,
   validate,
 };
 

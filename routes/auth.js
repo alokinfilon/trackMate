@@ -11,7 +11,8 @@ const {
   getProfile,     
   updateProfile,
   getPreferences,   // ✅ Imported preferences getter
-  updatePreferences // ✅ Imported preferences updater
+  updatePreferences, // ✅ Imported preferences updater
+  updatePassword,
 } = require("../controllers/auth");
 const validator = require("../middleware/validator");
 const { uploadSingle } = require("../utils/cloudinary"); 
@@ -63,6 +64,15 @@ router
   .put(
     passport.authenticate(["jwt", "basic"], { session: false }), 
     updatePreferences
+  );
+
+router
+  .route("/password")
+  .put(
+    passport.authenticate(["jwt", "basic"], { session: false }),
+    validator.updatePasswordValidationRules,
+    validator.validate,
+    updatePassword
   );
 
 module.exports = router;

@@ -340,6 +340,61 @@ async function updatePreferences(req, res) {
   }
 }
 
+async function updatePassword(req, res) {
+  try {
+    const userId = req.user.id;
+    const { currentPassword, newPassword, confirmNewPassword } = req.body;
+
+    if (!currentPassword || !newPassword || !confirmNewPassword) {
+      return res.status(400).json({
+        success: false,
+        error: "currentPassword, newPassword, and confirmNewPassword are required.",
+      });
+    }
+
+    if (newPassword !== confirmNewPassword) {
+      return res.status(400).json({
+        success: false,
+        error: "New passwords do not match.",
+      });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, error: "User not found." });
+    }
+
+    if (!user.password) {
+      return res.status(400).json({
+        success: false,
+        error: "Password update is not available for Auth0-linked accounts.",
+      });
+    }
+
+    const isCurrentPasswordValid = await helper.comparePassword(
+      currentPassword,
+      user.password
+    );
+
+    if (!isCurrentPasswordValid) {
+      return res.status(401).json({
+        success: false,
+        error: "Current password is incorrect.",
+      });
+    }
+
+    user.password = await helper.hashPassword(newPassword);
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Password updated successfully.",
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+}
+
 module.exports = {
   createUser,
   listUsers,
@@ -350,5 +405,6 @@ module.exports = {
   getProfile,
   updateProfile,
   getPreferences,
-  updatePreferences
+  updatePreferences,
+  updatePassword,
 };
