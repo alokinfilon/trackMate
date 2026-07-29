@@ -357,6 +357,39 @@
  *         description: Missing or invalid JWT
  *       404:
  *         description: Image not found or access denied
+ *
+ *   delete:
+ *     summary: Delete an image from Cloudinary and the database
+ *     tags: [Gallery]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: imageId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         example: "674c3d4e5f6789012347"
+ *     responses:
+ *       200:
+ *         description: Image deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Image deleted from Cloudinary and database.
+ *       401:
+ *         description: Missing or invalid JWT
+ *       404:
+ *         description: Image not found or not owned by the user
+ *       502:
+ *         description: Cloudinary deletion failed
  */
 
 /**

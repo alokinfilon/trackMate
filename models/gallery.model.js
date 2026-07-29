@@ -21,6 +21,10 @@ const gallerySchema = new mongoose.Schema(
       type: String,
       required: [true, "The physical image storage URL path string is required."]
     },
+    publicId: {
+      type: String,
+      required: [true, "The Cloudinary public ID is required for image management."]
+    },
     caption: {
       type: String,
       trim: true,

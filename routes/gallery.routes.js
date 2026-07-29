@@ -12,6 +12,7 @@ router.delete("/collections/:collectionId", verifyUserAuth, galleryController.de
 
 router.get("/images/:imageId", verifyUserAuth, galleryController.getImageById);
 router.patch("/images/:imageId/collection", verifyUserAuth, galleryController.assignImageToCollection);
+router.delete("/images/:imageId", verifyUserAuth, galleryController.deleteImage);
 
 router.post("/:tripId", verifyUserAuth, uploadSingle, galleryController.uploadPhoto);
 router.get("/:tripId", verifyUserAuth, galleryController.getTripGallery);

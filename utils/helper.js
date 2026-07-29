@@ -16,7 +16,7 @@ async function comparePassword(password, hashPassword) {
 }
 
 function issueAccessToken(payload) {
-    return jwt.sign(payload, config.SECRET, { expiresIn: 60 * 10}); 
+    return jwt.sign(payload, config.SECRET, { expiresIn: "3h" }); 
 }
 
 async function createRefreshToken(userId) {

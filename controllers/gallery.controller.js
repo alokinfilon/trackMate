@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Gallery = require("../models/gallery.model");
 const Collection = require("../models/collection.model");
 const Trip = require("../models/trip.model");
+const { cloudinary } = require("../utils/cloudinary");
 const {
   normalizeAccessibility,
   assertTripOwnership,
@@ -11,6 +12,26 @@ const {
   handleGalleryError,
   parseObjectId,
 } = require("../utils/gallery.helper");
+
+function extractCloudinaryPublicId(imageUrl) {
+  if (!imageUrl || typeof imageUrl !== "string") {
+    return null;
+  }
+
+  const marker = "/upload/";
+  const markerIndex = imageUrl.indexOf(marker);
+  if (markerIndex === -1) {
+    return null;
+  }
+
+  const withoutPrefix = imageUrl.slice(markerIndex + marker.length);
+  const pathWithoutVersion = withoutPrefix.replace(/^v\d+\//, "");
+  const lastDotIndex = pathWithoutVersion.lastIndexOf(".");
+
+  return lastDotIndex === -1
+    ? pathWithoutVersion
+    : pathWithoutVersion.slice(0, lastDotIndex);
+}
 
 exports.createCollection = async (req, res) => {
   try {
@@ -262,6 +283,7 @@ exports.deleteCollection = async (req, res) => {
         tripId: tripCheck.tripObjectId,
         collectionId: linkedCollectionId,
         imageUrl: req.file.path,
+        publicId: req.file.filename || req.file.public_id || extractCloudinaryPublicId(req.file.path),
         caption: caption || "",
         accessibility: normalizedAccessibility,
       });
@@ -389,3 +411,45 @@ exports.deleteCollection = async (req, res) => {
       return handleGalleryError(res, error, "Failed to update image collection.");
     }
   };
+
+exports.deleteImage = async (req, res) => {
+  try {
+    const { imageId } = req.params;
+    const userId = new mongoose.Types.ObjectId(req.user.id);
+
+    const parsed = parseObjectId(imageId, "image ID");
+    if (parsed.error) {
+      return res.status(400).json({ success: false, error: parsed.error });
+    }
+
+    const photo = await Gallery.findOne({ _id: parsed.id, userId });
+    if (!photo) {
+      return res.status(404).json({
+        success: false,
+        error: "Image not found or you are not the owner.",
+      });
+    }
+
+    if (photo.publicId) {
+      try {
+        await cloudinary.uploader.destroy(photo.publicId, {
+          invalidate: true,
+        });
+      } catch (cloudinaryError) {
+        return res.status(502).json({
+          success: false,
+          error: `Cloudinary deletion failed: ${cloudinaryError.message}`,
+        });
+      }
+    }
+
+    await Gallery.findByIdAndDelete(photo._id);
+
+    return res.status(200).json({
+      success: true,
+      message: "Image deleted from Cloudinary and database.",
+    });
+  } catch (error) {
+    return handleGalleryError(res, error, "Failed to delete image.");
+  }
+};
