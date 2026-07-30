@@ -73,6 +73,58 @@
  *           type: string
  *           format: date-time
  *
+ *     CollectionShare:
+ *       type: object
+ *       properties:
+ *         _id:
+ *           type: string
+ *           example: "6a6b1f29bcc69eab166711bc"
+ *         collectionId:
+ *           type: string
+ *           example: "6a69e485c05f23afda19b8ec"
+ *         userId:
+ *           type: object
+ *           properties:
+ *             email:
+ *               type: string
+ *               example: "rinkal@gmail.com"
+ *             id:
+ *               type: string
+ *               example: "6a68a228f5f132049253655f"
+ *         sharedBy:
+ *           type: string
+ *           example: "6a4cc121e8afd7c00e146393"
+ *         role:
+ *           type: string
+ *           enum: [viewer, editor]
+ *           example: editor
+ *         status:
+ *           type: string
+ *           enum: [pending, accepted, declined, revoked, expired]
+ *           example: pending
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *
+ *     CollectionPermissions:
+ *       type: object
+ *       properties:
+ *         canView:
+ *           type: boolean
+ *           example: true
+ *         canAdd:
+ *           type: boolean
+ *           example: true
+ *         canEdit:
+ *           type: boolean
+ *           example: true
+ *         canDelete:
+ *           type: boolean
+ *           example: false
+ *
  *     CreateCollectionRequest:
  *       type: object
  *       required:
@@ -104,6 +156,20 @@
  *         accessibility:
  *           $ref: '#/components/schemas/Accessibility'
  *
+ *     ShareCollectionRequest:
+ *       type: object
+ *       required:
+ *         - identifier
+ *       properties:
+ *         identifier:
+ *           type: string
+ *           description: User email or mobile number
+ *           example: "rinkal@gmail.com"
+ *         role:
+ *           type: string
+ *           enum: [viewer, editor]
+ *           example: editor
+ *
  *     AssignImageCollectionRequest:
  *       type: object
  *       properties:
@@ -133,6 +199,35 @@
  *         error:
  *           type: string
  *           example: "Trip not found or access denied."
+ *
+ *     CollectionMemberListResponse:
+ *       type: object
+ *       properties:
+ *         success:
+ *           type: boolean
+ *           example: true
+ *         count:
+ *           type: integer
+ *           example: 2
+ *         data:
+ *           type: array
+ *           items:
+ *             oneOf:
+ *               - $ref: '#/components/schemas/CollectionShare'
+ *               - type: object
+ *                 properties:
+ *                   userId:
+ *                     type: string
+ *                     example: "6a4cc121e8afd7c00e146393"
+ *                   role:
+ *                     type: string
+ *                     example: owner
+ *                   accessType:
+ *                     type: string
+ *                     example: owner
+ *                   status:
+ *                     type: string
+ *                     example: accepted
  */
 
 /**
@@ -243,6 +338,8 @@
  *                   properties:
  *                     collection:
  *                       $ref: '#/components/schemas/PhotoCollection'
+ *                     permissions:
+ *                       $ref: '#/components/schemas/CollectionPermissions'
  *                     photos:
  *                       type: array
  *                       items:
@@ -323,6 +420,101 @@
  *         description: Missing or invalid JWT
  *       404:
  *         description: Collection not found or access denied
+ *
+ *   post:
+ *     summary: Invite a user to a collection
+ *     tags: [Gallery]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: collectionId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         example: "674b2c3d4e5f6789012346"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ShareCollectionRequest'
+ *     responses:
+ *       200:
+ *         description: Collection invite created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Collection invite sent successfully.
+ *                 data:
+ *                   $ref: '#/components/schemas/CollectionShare'
+ *       400:
+ *         description: Invalid identifier, invalid role, or collection not shareable
+ *       403:
+ *         description: Only the owner can share this collection
+ *       404:
+ *         description: User or collection not found
+ *       409:
+ *         description: Shared user already has accepted access
+ *
+ * /api/gallery/collections/{collectionId}/members:
+ *   get:
+ *     summary: List collection members
+ *     tags: [Gallery]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: collectionId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         example: "674b2c3d4e5f6789012346"
+ *     responses:
+ *       200:
+ *         description: Collection members retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CollectionMemberListResponse'
+ *       403:
+ *         description: Only the owner can view collection members
+ *       404:
+ *         description: Collection not found
+ *
+ * /api/gallery/collections/{collectionId}/members/{memberId}:
+ *   delete:
+ *     summary: Revoke access for a shared member
+ *     tags: [Gallery]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: collectionId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         example: "674b2c3d4e5f6789012346"
+ *       - in: path
+ *         name: memberId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         example: "6a68a228f5f132049253655f"
+ *     responses:
+ *       200:
+ *         description: Access revoked successfully
+ *       403:
+ *         description: Only the owner can revoke access
+ *       404:
+ *         description: Shared member not found
  */
 
 /**

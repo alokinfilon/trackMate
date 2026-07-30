@@ -1,14 +1,24 @@
 const mongoose = require("mongoose");
 const Gallery = require("../models/gallery.model");
 const Collection = require("../models/collection.model");
+const CollectionShare = require("../models/collectionShare");
+const User = require("../models/user");
 const Trip = require("../models/trip.model");
+const helper = require("../utils/helper");
 const { cloudinary } = require("../utils/cloudinary");
 const {
+  notifyCollectionParticipants,
+  notifyCollectionInvite,
+  notifyAccessRevoked,
+} = require("../utils/notification.service");
+const {
   normalizeAccessibility,
+  normalizeCollectionRole,
   assertTripOwnership,
   assertCollectionOwnership,
-  buildImageVisibilityFilter,
-  buildCollectionVisibilityFilter,
+  resolveCollectionAccess,
+  canAccessCollection,
+  getAccessibleCollectionIds,
   handleGalleryError,
   parseObjectId,
 } = require("../utils/gallery.helper");
@@ -31,6 +41,32 @@ function extractCloudinaryPublicId(imageUrl) {
   return lastDotIndex === -1
     ? pathWithoutVersion
     : pathWithoutVersion.slice(0, lastDotIndex);
+}
+
+function buildPermissions(context) {
+  return {
+    canView: canAccessCollection(context, "view"),
+    canAdd: canAccessCollection(context, "add"),
+    canEdit: canAccessCollection(context, "edit"),
+    canDelete: Boolean(context && context.isOwner),
+  };
+}
+
+async function loadShareTarget(identifier) {
+  const parsedIdentifier = helper.parseIdentifier(identifier);
+  if (parsedIdentifier.error) {
+    return { status: 400, error: parsedIdentifier.error };
+  }
+
+  const user = await User.findOne({
+    [parsedIdentifier.type]: parsedIdentifier.value,
+  });
+
+  if (!user) {
+    return { status: 404, error: "User not found." };
+  }
+
+  return { user };
 }
 
 exports.createCollection = async (req, res) => {
@@ -58,17 +94,16 @@ exports.createCollection = async (req, res) => {
       });
     }
 
-    // FIX: Check for an existing collection with the same name for this specific trip
     const cleanName = String(name).trim();
     const existingCollection = await Collection.findOne({
       tripId: tripCheck.tripObjectId,
-      name: { $regex: new RegExp(`^${cleanName}$`, "i") } // Case-insensitive check
+      name: { $regex: new RegExp(`^${cleanName}$`, "i") },
     });
 
     if (existingCollection) {
       return res.status(400).json({
         success: false,
-        error: "A collection with this name already exists for this trip."
+        error: "A collection with this name already exists for this trip.",
       });
     }
 
@@ -94,7 +129,7 @@ exports.listCollections = async (req, res) => {
   try {
     const userId = new mongoose.Types.ObjectId(req.user.id);
     const { tripId } = req.query;
-    const filters = buildCollectionVisibilityFilter(userId);
+    const filters = {};
 
     if (tripId) {
       const parsed = parseObjectId(tripId, "trip ID");
@@ -110,7 +145,10 @@ exports.listCollections = async (req, res) => {
       filters.tripId = parsed.id;
     }
 
-    const collections = await Collection.find(filters).sort({ createdAt: -1 });
+    const accessibleCollectionIds = await getAccessibleCollectionIds(userId, filters);
+    const collections = accessibleCollectionIds.length
+      ? await Collection.find({ _id: { $in: accessibleCollectionIds } }).sort({ createdAt: -1 })
+      : [];
 
     return res.status(200).json({
       success: true,
@@ -127,32 +165,36 @@ exports.getCollection = async (req, res) => {
     const userId = new mongoose.Types.ObjectId(req.user.id);
     const { collectionId } = req.params;
 
-    const parsed = parseObjectId(collectionId, "collection ID");
-    if (parsed.error) {
-      return res.status(400).json({ success: false, error: parsed.error });
+    const access = await resolveCollectionAccess(collectionId, userId);
+    if (access.status) {
+      return res.status(access.status).json({ success: false, error: access.error });
     }
 
-    const collection = await Collection.findOne(
-      buildCollectionVisibilityFilter(userId, { _id: parsed.id })
-    );
-
-    if (!collection) {
+    if (!canAccessCollection(access, "view")) {
       return res.status(404).json({
         success: false,
         error: "Collection not found or access denied.",
       });
     }
 
-    const photos = await Gallery.find(
-      buildImageVisibilityFilter(userId, { collectionId: collection._id })
-    )
+    const photoFilter = {
+      collectionId: access.collectionObjectId,
+    };
+
+    if (!access.isOwner) {
+      photoFilter.accessibility = { $in: ["public", "shared"] };
+    }
+
+    const photos = await Gallery.find(photoFilter)
       .sort({ createdAt: -1 })
-      .populate("userId", "email mobile");
+      .populate("userId", "email mobile")
+      .populate("collectionId", "name accessibility");
 
     return res.status(200).json({
       success: true,
       data: {
-        collection,
+        collection: access.collection,
+        permissions: buildPermissions(access),
         photos,
         photoCount: photos.length,
       },
@@ -166,14 +208,28 @@ exports.updateCollection = async (req, res) => {
   try {
     const userId = new mongoose.Types.ObjectId(req.user.id);
     const { collectionId } = req.params;
-    const { name, description, accessibility } = req.body;
+    const { name, description, accessibility } = req.body || {};
 
-    const collectionCheck = await assertCollectionOwnership(collectionId, userId);
-    if (collectionCheck.error) {
-      return res.status(collectionCheck.status).json({ success: false, error: collectionCheck.error });
+    const access = await resolveCollectionAccess(collectionId, userId);
+    if (access.status) {
+      return res.status(access.status).json({ success: false, error: access.error });
     }
 
-    const collection = collectionCheck.collection;
+    if (!canAccessCollection(access, "edit")) {
+      return res.status(403).json({
+        success: false,
+        error: "You do not have permission to edit this collection.",
+      });
+    }
+
+    const collection = access.collection;
+
+    if (name === undefined && description === undefined && accessibility === undefined) {
+      return res.status(400).json({
+        success: false,
+        error: "Provide at least one field to update.",
+      });
+    }
 
     if (name !== undefined) {
       if (!String(name).trim()) {
@@ -187,6 +243,13 @@ exports.updateCollection = async (req, res) => {
     }
 
     if (accessibility !== undefined) {
+      if (!access.isOwner) {
+        return res.status(403).json({
+          success: false,
+          error: "Only the owner can change collection accessibility.",
+        });
+      }
+
       const normalizedAccessibility = normalizeAccessibility(accessibility, null);
       if (!normalizedAccessibility) {
         return res.status(400).json({
@@ -198,6 +261,41 @@ exports.updateCollection = async (req, res) => {
     }
 
     const updatedCollection = await collection.save();
+
+    if (accessibility === "private") {
+      const revokedShares = await CollectionShare.find({
+        collectionId: access.collectionObjectId,
+        status: "accepted",
+      }).select("userId");
+
+      await CollectionShare.updateMany(
+        { collectionId: access.collectionObjectId, status: "accepted" },
+        { $set: { status: "revoked" } }
+      );
+
+      await Promise.all(
+        revokedShares.map((share) =>
+          notifyAccessRevoked({
+            recipientId: share.userId,
+            actorId: userId,
+            collectionId: access.collectionObjectId,
+            shareId: null,
+            collectionName: updatedCollection.name,
+          })
+        )
+      );
+    } else {
+      await notifyCollectionParticipants({
+        collectionId: access.collectionObjectId,
+        actorId: userId,
+        type: "collection_updated",
+        title: "Collection updated",
+        message: `${updatedCollection.name} was updated.`,
+        metadata: {
+          accessibility: updatedCollection.accessibility,
+        },
+      });
+    }
 
     return res.status(200).json({
       success: true,
@@ -214,17 +312,46 @@ exports.deleteCollection = async (req, res) => {
     const userId = new mongoose.Types.ObjectId(req.user.id);
     const { collectionId } = req.params;
 
-    const collectionCheck = await assertCollectionOwnership(collectionId, userId);
-    if (collectionCheck.error) {
-      return res.status(collectionCheck.status).json({ success: false, error: collectionCheck.error });
+    const access = await resolveCollectionAccess(collectionId, userId);
+    if (access.status) {
+      return res.status(access.status).json({ success: false, error: access.error });
     }
 
+    if (!access.isOwner) {
+      return res.status(403).json({
+        success: false,
+        error: "Only the owner can delete this collection.",
+      });
+    }
+
+    const activeShares = await CollectionShare.find({
+      collectionId: access.collectionObjectId,
+      status: "accepted",
+    }).select("userId");
+
+    await Promise.all(
+      activeShares.map((share) =>
+        notifyAccessRevoked({
+          recipientId: share.userId,
+          actorId: userId,
+          collectionId: access.collectionObjectId,
+          shareId: null,
+          collectionName: access.collection.name,
+        })
+      )
+    );
+
+    await CollectionShare.updateMany(
+      { collectionId: access.collectionObjectId },
+      { $set: { status: "revoked" } }
+    );
+
     await Gallery.updateMany(
-      { collectionId: collectionCheck.collectionObjectId },
+      { collectionId: access.collectionObjectId },
       { $set: { collectionId: null } }
     );
 
-    await Collection.findByIdAndDelete(collectionCheck.collectionObjectId);
+    await Collection.findByIdAndDelete(access.collectionObjectId);
 
     return res.status(200).json({
       success: true,
@@ -235,182 +362,470 @@ exports.deleteCollection = async (req, res) => {
   }
 };
 
-  exports.uploadPhoto = async (req, res) => {
-    try {
-      const { tripId } = req.params;
-      const { caption, accessibility, collectionId } = req.body;
-      const userId = new mongoose.Types.ObjectId(req.user.id);
+exports.shareCollection = async (req, res) => {
+  try {
+    const userId = new mongoose.Types.ObjectId(req.user.id);
+    const { collectionId } = req.params;
+    const { identifier, role } = req.body;
 
+    if (!identifier) {
+      return res.status(400).json({
+        success: false,
+        error: "identifier is required.",
+      });
+    }
+
+    const access = await resolveCollectionAccess(collectionId, userId);
+    if (access.status) {
+      return res.status(access.status).json({ success: false, error: access.error });
+    }
+
+    if (!access.isOwner) {
+      return res.status(403).json({
+        success: false,
+        error: "Only the owner can share this collection.",
+      });
+    }
+
+    if (access.collection.accessibility === "private") {
+      return res.status(400).json({
+        success: false,
+        error: "Private collections cannot be shared.",
+      });
+    }
+
+    const targetUserResult = await loadShareTarget(identifier);
+    if (targetUserResult.status) {
+      return res.status(targetUserResult.status).json({ success: false, error: targetUserResult.error });
+    }
+
+    if (String(targetUserResult.user._id) === String(userId)) {
+      return res.status(400).json({
+        success: false,
+        error: "You already own this collection.",
+      });
+    }
+
+    const normalizedRole = normalizeCollectionRole(
+      role,
+      access.collection.accessibility === "public" ? "viewer" : "editor"
+    );
+
+    if (!normalizedRole) {
+      return res.status(400).json({
+        success: false,
+        error: "role must be viewer or editor.",
+      });
+    }
+
+    const effectiveRole =
+      access.collection.accessibility === "public" ? "viewer" : normalizedRole;
+
+    const existingShare = await CollectionShare.findOne({
+      collectionId: access.collectionObjectId,
+      userId: targetUserResult.user._id,
+    });
+
+    if (existingShare && existingShare.status === "accepted") {
+      return res.status(409).json({
+        success: false,
+        error: "This user already has access to the collection.",
+      });
+    }
+
+    const share = existingShare || new CollectionShare({
+      collectionId: access.collectionObjectId,
+      userId: targetUserResult.user._id,
+    });
+
+    share.sharedBy = userId;
+    share.role = effectiveRole;
+    share.status = "pending";
+    await share.save();
+
+    await notifyCollectionInvite({
+      recipientId: targetUserResult.user._id,
+      actorId: userId,
+      collectionId: access.collectionObjectId,
+      shareId: share._id,
+      role: effectiveRole,
+      collectionName: access.collection.name,
+      accessibility: access.collection.accessibility,
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Collection invite sent successfully.",
+      data: await share.populate("userId", "email mobile"),
+    });
+  } catch (error) {
+    return handleGalleryError(res, error, "Failed to share collection.");
+  }
+};
+
+exports.listCollectionMembers = async (req, res) => {
+  try {
+    const userId = new mongoose.Types.ObjectId(req.user.id);
+    const { collectionId } = req.params;
+
+    const access = await resolveCollectionAccess(collectionId, userId);
+    if (access.status) {
+      return res.status(access.status).json({ success: false, error: access.error });
+    }
+
+    if (!access.isOwner) {
+      return res.status(403).json({
+        success: false,
+        error: "Only the owner can view collection members.",
+      });
+    }
+
+    const members = await CollectionShare.find({ collectionId: access.collectionObjectId })
+      .sort({ createdAt: -1 })
+      .populate("userId", "email mobile")
+      .populate("sharedBy", "email mobile");
+
+    return res.status(200).json({
+      success: true,
+      count: members.length + 1,
+      data: [
+        {
+          userId: access.collection.userId,
+          role: "owner",
+          accessType: "owner",
+        },
+        ...members.map((member) => ({
+          id: member._id,
+          userId: member.userId,
+          role: member.role,
+          status: member.status,
+          sharedBy: member.sharedBy,
+          createdAt: member.createdAt,
+          updatedAt: member.updatedAt,
+        })),
+      ],
+    });
+  } catch (error) {
+    return handleGalleryError(res, error, "Failed to list collection members.");
+  }
+};
+
+exports.revokeCollectionAccess = async (req, res) => {
+  try {
+    const userId = new mongoose.Types.ObjectId(req.user.id);
+    const { collectionId, memberId } = req.params;
+
+    const access = await resolveCollectionAccess(collectionId, userId);
+    if (access.status) {
+      return res.status(access.status).json({ success: false, error: access.error });
+    }
+
+    if (!access.isOwner) {
+      return res.status(403).json({
+        success: false,
+        error: "Only the owner can revoke access.",
+      });
+    }
+
+    const deletedShare = await CollectionShare.findOne({
+      collectionId: access.collectionObjectId,
+      userId: memberId,
+    });
+
+    if (!deletedShare) {
+      return res.status(404).json({
+        success: false,
+        error: "Shared member not found.",
+      });
+    }
+
+    await CollectionShare.updateOne(
+      { _id: deletedShare._id },
+      { $set: { status: "revoked" } }
+    );
+
+    await notifyAccessRevoked({
+      recipientId: deletedShare.userId,
+      actorId: userId,
+      collectionId: access.collectionObjectId,
+      shareId: deletedShare._id,
+      collectionName: access.collection.name,
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Collection access revoked successfully.",
+    });
+  } catch (error) {
+    return handleGalleryError(res, error, "Failed to revoke collection access.");
+  }
+};
+
+exports.uploadPhoto = async (req, res) => {
+  try {
+    const { tripId } = req.params;
+    const { caption, accessibility, collectionId } = req.body;
+    const userId = new mongoose.Types.ObjectId(req.user.id);
+
+    if (!req.file || !req.file.path) {
+      return res.status(400).json({
+        success: false,
+        error: "Image upload failed: send the file in multipart field named 'image'.",
+      });
+    }
+
+    const normalizedAccessibility = normalizeAccessibility(accessibility);
+    if (!normalizedAccessibility) {
+      return res.status(400).json({
+        success: false,
+        error: "accessibility must be public, shared, or private.",
+      });
+    }
+
+    let tripObjectId = null;
+    let linkedCollectionId = null;
+
+    if (collectionId) {
+      const access = await resolveCollectionAccess(collectionId, userId);
+      if (access.status) {
+        return res.status(access.status).json({ success: false, error: access.error });
+      }
+
+      if (!canAccessCollection(access, "add")) {
+        return res.status(403).json({
+          success: false,
+          error: "You do not have permission to add photos to this collection.",
+        });
+      }
+
+      tripObjectId = access.collection.tripId;
+      linkedCollectionId = access.collectionObjectId;
+
+      const parsedTrip = parseObjectId(tripId, "trip ID");
+      if (parsedTrip.error) {
+        return res.status(400).json({ success: false, error: parsedTrip.error });
+      }
+
+      if (String(parsedTrip.id) !== String(tripObjectId)) {
+        return res.status(400).json({
+          success: false,
+          error: "Collection does not belong to this trip.",
+        });
+      }
+    } else {
       const tripCheck = await assertTripOwnership(tripId, userId);
       if (tripCheck.error) {
         return res.status(tripCheck.status).json({ success: false, error: tripCheck.error });
       }
 
-      if (!req.file || !req.file.path) {
-        return res.status(400).json({
-          success: false,
-          error: "Image upload failed: send the file in multipart field named 'image'.",
-        });
-      }
+      tripObjectId = tripCheck.tripObjectId;
+    }
 
-      const normalizedAccessibility = normalizeAccessibility(accessibility);
-      if (!normalizedAccessibility) {
-        return res.status(400).json({
-          success: false,
-          error: "accessibility must be public, shared, or private.",
-        });
-      }
+    const savedPhoto = await Gallery.create({
+      userId,
+      tripId: tripObjectId,
+      collectionId: linkedCollectionId,
+      imageUrl: req.file.path,
+      publicId: req.file.filename || req.file.public_id || extractCloudinaryPublicId(req.file.path),
+      caption: caption || "",
+      accessibility: normalizedAccessibility,
+    });
 
-      let linkedCollectionId = null;
-      if (collectionId) {
-        const collectionCheck = await assertCollectionOwnership(collectionId, userId);
-        if (collectionCheck.error) {
-          return res.status(collectionCheck.status).json({ success: false, error: collectionCheck.error });
-        }
-
-        if (String(collectionCheck.collection.tripId) !== String(tripCheck.tripObjectId)) {
-          return res.status(400).json({
-            success: false,
-            error: "Collection does not belong to this trip.",
-          });
-        }
-
-        linkedCollectionId = collectionCheck.collectionObjectId;
-      }
-
-      const savedPhoto = await Gallery.create({
-        userId,
-        tripId: tripCheck.tripObjectId,
+    if (linkedCollectionId) {
+      await notifyCollectionParticipants({
         collectionId: linkedCollectionId,
-        imageUrl: req.file.path,
-        publicId: req.file.filename || req.file.public_id || extractCloudinaryPublicId(req.file.path),
-        caption: caption || "",
-        accessibility: normalizedAccessibility,
+        actorId: userId,
+        type: "photo_uploaded",
+        title: "Photo added",
+        message: "A new photo was added to the collection.",
+        entityType: "photo",
+        entityId: savedPhoto._id,
+        metadata: {
+          accessibility: normalizedAccessibility,
+        },
       });
-
-      return res.status(201).json({
-        success: true,
-        message: "Image uploaded and pinned to your trip gallery successfully!",
-        data: savedPhoto,
-      });
-    } catch (error) {
-      return handleGalleryError(res, error, "Image upload failed.");
     }
-  };
 
-  exports.getTripGallery = async (req, res) => {
-    try {
-      const { tripId } = req.params;
-      const userId = new mongoose.Types.ObjectId(req.user.id);
+    return res.status(201).json({
+      success: true,
+      message: "Image uploaded and pinned to your trip gallery successfully!",
+      data: savedPhoto,
+    });
+  } catch (error) {
+    return handleGalleryError(res, error, "Image upload failed.");
+  }
+};
 
-      const parsed = parseObjectId(tripId, "trip ID");
-      if (parsed.error) {
-        return res.status(400).json({ success: false, error: parsed.error });
-      }
+exports.getTripGallery = async (req, res) => {
+  try {
+    const { tripId } = req.params;
+    const userId = new mongoose.Types.ObjectId(req.user.id);
 
-      const trip = await Trip.findById(parsed.id);
-      if (!trip) {
-        return res.status(404).json({ success: false, error: "Trip not found." });
-      }
-
-      const photos = await Gallery.find(
-        buildImageVisibilityFilter(userId, { tripId: parsed.id })
-      )
-        .sort({ createdAt: -1 })
-        .populate("userId", "email mobile")
-        .populate("collectionId", "name accessibility");
-
-      return res.status(200).json({
-        success: true,
-        count: photos.length,
-        data: photos,
-      });
-    } catch (error) {
-      return handleGalleryError(res, error, "Failed to fetch trip gallery.");
+    const parsed = parseObjectId(tripId, "trip ID");
+    if (parsed.error) {
+      return res.status(400).json({ success: false, error: parsed.error });
     }
-  };
 
-  exports.getImageById = async (req, res) => {
-    try {
-      const { imageId } = req.params;
-      const userId = new mongoose.Types.ObjectId(req.user.id);
+    const trip = await Trip.findById(parsed.id);
+    if (!trip) {
+      return res.status(404).json({ success: false, error: "Trip not found." });
+    }
 
-      const parsed = parseObjectId(imageId, "image ID");
-      if (parsed.error) {
-        return res.status(400).json({ success: false, error: parsed.error });
-      }
+    const isOwner = String(trip.userId) === String(userId);
+    const accessibleCollectionIds = await getAccessibleCollectionIds(userId, { tripId: parsed.id });
 
-      const photo = await Gallery.findOne(
-        buildImageVisibilityFilter(userId, { _id: parsed.id })
-      )
-        .populate("userId", "email mobile")
-        .populate("collectionId", "name accessibility")
-        .populate("tripId", "location_id status start_date end_date");
+    let photoFilter = { tripId: parsed.id };
+    if (!isOwner) {
+      photoFilter = {
+        tripId: parsed.id,
+        collectionId: { $in: accessibleCollectionIds },
+        accessibility: { $in: ["public", "shared"] },
+      };
+    }
 
-      if (!photo) {
+    const photos = await Gallery.find(photoFilter)
+      .sort({ createdAt: -1 })
+      .populate("userId", "email mobile")
+      .populate("collectionId", "name accessibility");
+
+    return res.status(200).json({
+      success: true,
+      count: photos.length,
+      data: photos,
+    });
+  } catch (error) {
+    return handleGalleryError(res, error, "Failed to fetch trip gallery.");
+  }
+};
+
+exports.getImageById = async (req, res) => {
+  try {
+    const { imageId } = req.params;
+    const userId = new mongoose.Types.ObjectId(req.user.id);
+
+    const parsed = parseObjectId(imageId, "image ID");
+    if (parsed.error) {
+      return res.status(400).json({ success: false, error: parsed.error });
+    }
+
+    const photo = await Gallery.findById(parsed.id)
+      .populate("userId", "email mobile")
+      .populate("collectionId", "name accessibility userId tripId")
+      .populate("tripId", "location_id status start_date end_date userId");
+
+    if (!photo) {
+      return res.status(404).json({
+        success: false,
+        error: "Image not found or access denied.",
+      });
+    }
+
+    const isOwner = String(photo.userId._id || photo.userId) === String(userId);
+    if (!isOwner) {
+      if (!photo.collectionId) {
         return res.status(404).json({
           success: false,
           error: "Image not found or access denied.",
         });
       }
 
-      return res.status(200).json({
-        success: true,
-        data: photo,
-      });
-    } catch (error) {
-      return handleGalleryError(res, error, "Failed to fetch image.");
-    }
-  };
-
-  exports.assignImageToCollection = async (req, res) => {
-    try {
-      const { imageId } = req.params;
-      const { collectionId } = req.body;
-      const userId = new mongoose.Types.ObjectId(req.user.id);
-
-      const photo = await Gallery.findOne({ _id: imageId, userId });
-      if (!photo) {
+      const access = await resolveCollectionAccess(photo.collectionId._id, userId);
+      if (access.status || !canAccessCollection(access, "view") || !["public", "shared"].includes(photo.accessibility)) {
         return res.status(404).json({
           success: false,
-          error: "Image not found or you are not the owner.",
+          error: "Image not found or access denied.",
         });
       }
+    }
 
-      if (collectionId === null || collectionId === "" || collectionId === undefined) {
-        photo.collectionId = null;
-        await photo.save();
-        return res.status(200).json({
-          success: true,
-          message: "Image removed from collection.",
-          data: photo,
-        });
-      }
+    return res.status(200).json({
+      success: true,
+      data: photo,
+    });
+  } catch (error) {
+    return handleGalleryError(res, error, "Failed to fetch image.");
+  }
+};
 
-      const collectionCheck = await assertCollectionOwnership(collectionId, userId);
-      if (collectionCheck.error) {
-        return res.status(collectionCheck.status).json({ success: false, error: collectionCheck.error });
-      }
+exports.assignImageToCollection = async (req, res) => {
+  try {
+    const { imageId } = req.params;
+    const { collectionId } = req.body;
+    const userId = new mongoose.Types.ObjectId(req.user.id);
 
-      if (String(collectionCheck.collection.tripId) !== String(photo.tripId)) {
-        return res.status(400).json({
-          success: false,
-          error: "Collection and image must belong to the same trip.",
-        });
-      }
+    const photo = await Gallery.findOne({ _id: imageId, userId });
+    if (!photo) {
+      return res.status(404).json({
+        success: false,
+        error: "Image not found or you are not the owner.",
+      });
+    }
 
-      photo.collectionId = collectionCheck.collectionObjectId;
+    if (collectionId === null || collectionId === "" || collectionId === undefined) {
+      const previousCollectionId = photo.collectionId;
+      photo.collectionId = null;
       await photo.save();
+
+      if (previousCollectionId) {
+        await notifyCollectionParticipants({
+          collectionId: previousCollectionId,
+          actorId: userId,
+          type: "photo_updated",
+          title: "Photo removed from collection",
+          message: "A photo was removed from the collection.",
+          entityType: "photo",
+          entityId: photo._id,
+        });
+      }
 
       return res.status(200).json({
         success: true,
-        message: "Image added to collection.",
+        message: "Image removed from collection.",
         data: photo,
       });
-    } catch (error) {
-      return handleGalleryError(res, error, "Failed to update image collection.");
     }
-  };
+
+    const collectionCheck = await resolveCollectionAccess(collectionId, userId);
+    if (collectionCheck.status) {
+      return res.status(collectionCheck.status).json({ success: false, error: collectionCheck.error });
+    }
+
+    if (!canAccessCollection(collectionCheck, "add")) {
+      return res.status(403).json({
+        success: false,
+        error: "You do not have permission to modify this collection.",
+      });
+    }
+
+    if (String(collectionCheck.collection.tripId) !== String(photo.tripId)) {
+      return res.status(400).json({
+        success: false,
+        error: "Collection and image must belong to the same trip.",
+      });
+    }
+
+    photo.collectionId = collectionCheck.collectionObjectId;
+    await photo.save();
+
+    await notifyCollectionParticipants({
+      collectionId: collectionCheck.collectionObjectId,
+      actorId: userId,
+      type: "photo_updated",
+      title: "Photo updated",
+      message: "A photo was assigned to a collection.",
+      entityType: "photo",
+      entityId: photo._id,
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Image added to collection.",
+      data: photo,
+    });
+  } catch (error) {
+    return handleGalleryError(res, error, "Failed to update image collection.");
+  }
+};
 
 exports.deleteImage = async (req, res) => {
   try {
@@ -444,6 +859,18 @@ exports.deleteImage = async (req, res) => {
     }
 
     await Gallery.findByIdAndDelete(photo._id);
+
+    if (photo.collectionId) {
+      await notifyCollectionParticipants({
+        collectionId: photo.collectionId,
+        actorId: userId,
+        type: "photo_deleted",
+        title: "Photo deleted",
+        message: "A photo was deleted from the collection.",
+        entityType: "photo",
+        entityId: photo._id,
+      });
+    }
 
     return res.status(200).json({
       success: true,

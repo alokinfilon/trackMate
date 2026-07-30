@@ -314,3 +314,65 @@
 1785330002991:::1 GET: /api/trips
 
 1785330065539:::1 GET: /api/trips
+
+1785404938010:::1 GET: /api-docs/
+
+1785404940043:::1 GET: /api-docs/swagger-ui.css
+
+1785404940044:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1785404940045:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1785404940046:::1 GET: /api-docs/swagger-ui-init.js
+
+1785405029071:::1 GET: /api/gallery/collections
+
+1785405095280:::1 GET: /api/gallery/collections
+
+1785405213986:::1 GET: /api/gallery/collections/6a69e485c05f23afda19b8ec/share
+
+1785405224870:::1 POST: /api/gallery/collections/6a69e485c05f23afda19b8ec/share
+
+1785405238712:::1 POST: /api/gallery/collections/6a69e485c05f23afda19b8ec/share
+
+1785405251756:::1 POST: /api/gallery/collections/6a69e485c05f23afda19b8ec/share
+
+1785405260002:::1 POST: /api/gallery/collections/6a69e485c05f23afda19b8ec/share
+
+1785405385111:::1 GET: /api/gallery/collections
+
+1785405457514:::1 GET: /api/gallery/collections/6a69e485c05f23afda19b8ec/members
+
+1785405484447:::1 PATCH: /api/gallery/collections/6a69e485c05f23afda19b8ec/members
+
+1785405509244:::1 PATCH: /api/gallery/collections/6a69e485c05f23afda19b8ec
+
+1785405632504:::1 PATCH: /api/gallery/collections/6a69e485c05f23afda19b8ec
+
+1785405644586:::1 GET: /api/gallery/collections
+
+1785418204441:::1 GET: /api-docs/
+
+1785418204649:::1 GET: /api-docs/swagger-ui.css
+
+1785418204652:::1 GET: /api-docs/swagger-ui-bundle.js
+
+1785418204653:::1 GET: /api-docs/swagger-ui-standalone-preset.js
+
+1785418204654:::1 GET: /api-docs/swagger-ui-init.js
+
+1785418317955:::1 POST: /auth/login
+
+1785418343889:::1 GET: /api/notifications
+
+1785418406812:::1 GET: /api/gallery/collections
+
+1785418461142:::1 POST: /api/gallery/collections/6a69e485c05f23afda19b8ec/share
+
+1785418486552:::1 POST: /api/gallery/collections/6a69e485c05f23afda19b8ec
+
+1785418545363:::1 POST: /api/gallery/collections/6a69e485c05f23afda19b8ec/share
+
+1785418560176:::1 GET: /api/gallery/collections
+
+1785418584934:::1 POST: /api/gallery/collections/6a5f14278187746caed05c4a/share

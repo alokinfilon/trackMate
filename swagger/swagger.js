@@ -46,6 +46,7 @@ const swaggerOptions = {
     path.resolve(__dirname, '../docs/auth.swagger.js'),
     path.resolve(__dirname, '../docs/location.swagger.js'),
     path.resolve(__dirname, '../docs/gallery.swagger.js'),
+    path.resolve(__dirname, '../docs/notification.swagger.js'),
     path.resolve(__dirname, '../docs/trip.swagger.js'),
     path.resolve(__dirname, '../docs/app.swagger.js'),
   ],

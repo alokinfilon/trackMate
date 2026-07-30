@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const Trip = require("../models/trip.model");
 const Collection = require("../models/collection.model");
+const CollectionShare = require("../models/collectionShare");
 
 const ACCESSIBILITY_VALUES = ["public", "shared", "private"];
+const COLLECTION_ROLE_VALUES = ["viewer", "editor"];
 
 function parseObjectId(value, label = "ID") {
   if (!mongoose.Types.ObjectId.isValid(value)) {
@@ -19,6 +21,19 @@ function normalizeAccessibility(value, fallback = "shared") {
   if (!ACCESSIBILITY_VALUES.includes(normalized)) {
     return null;
   }
+  return normalized;
+}
+
+function normalizeCollectionRole(value, fallback = "viewer") {
+  if (!value) {
+    return fallback;
+  }
+
+  const normalized = String(value).toLowerCase().trim();
+  if (!COLLECTION_ROLE_VALUES.includes(normalized)) {
+    return null;
+  }
+
   return normalized;
 }
 
@@ -50,19 +65,91 @@ async function assertCollectionOwnership(collectionId, userId) {
   return { collection, collectionObjectId: parsed.id };
 }
 
-function buildImageVisibilityFilter(userId, extraFilters = {}) {
+async function resolveCollectionAccess(collectionId, userId) {
+  const parsed = parseObjectId(collectionId, "collection ID");
+  if (parsed.error) {
+    return { status: 400, error: parsed.error };
+  }
+
+  const collection = await Collection.findById(parsed.id);
+  if (!collection) {
+    return { status: 404, error: "Collection not found or access denied." };
+  }
+
+  const isOwner = String(collection.userId) === String(userId);
+  const share = isOwner
+    ? null
+    : await CollectionShare.findOne({
+        collectionId: parsed.id,
+        userId,
+        $or: [
+          { status: "accepted" },
+          { status: { $exists: false } },
+        ],
+      });
+
   return {
-    ...extraFilters,
-    $or: [
-      { accessibility: "public" },
-      { accessibility: "shared" },
-      { accessibility: "private", userId },
-    ],
+    collection,
+    collectionObjectId: parsed.id,
+    isOwner,
+    share,
   };
 }
 
-function buildCollectionVisibilityFilter(userId, extraFilters = {}) {
-  return buildImageVisibilityFilter(userId, extraFilters);
+function canAccessCollection(context, action) {
+  if (!context || !context.collection) {
+    return false;
+  }
+
+  if (context.isOwner) {
+    return true;
+  }
+
+  if (!context.share || (context.share.status && context.share.status !== "accepted")) {
+    return false;
+  }
+
+  if (context.collection.accessibility === "private") {
+    return false;
+  }
+
+  if (action === "view") {
+    return true;
+  }
+
+  if (action === "add" || action === "edit") {
+    return context.collection.accessibility === "shared" && context.share.role === "editor";
+  }
+
+  return false;
+}
+
+async function getAccessibleCollectionIds(userId, filters = {}) {
+  const ownedCollections = await Collection.find({ ...filters, userId })
+    .select("_id")
+    .lean();
+
+  const sharedCollections = await CollectionShare.find({
+    userId,
+    $or: [
+      { status: "accepted" },
+      { status: { $exists: false } },
+    ],
+  }).populate({
+    path: "collectionId",
+    match: {
+      ...filters,
+      accessibility: { $in: ["public", "shared"] },
+    },
+    select: "_id",
+  });
+
+  const ownedIds = ownedCollections.map((collection) => String(collection._id));
+  const sharedIds = sharedCollections
+    .map((share) => share.collectionId && String(share.collectionId._id))
+    .filter(Boolean);
+
+  return [...new Set([...ownedIds, ...sharedIds])];
 }
 
 function handleGalleryError(res, error, fallbackMessage) {
@@ -75,6 +162,14 @@ function handleGalleryError(res, error, fallbackMessage) {
   }
 
   if (error.code === 11000) {
+    const duplicateKey = error.keyPattern || {};
+    if (duplicateKey.collectionId && duplicateKey.userId) {
+      return res.status(409).json({
+        success: false,
+        error: "This user already has access to the collection.",
+      });
+    }
+
     return res.status(409).json({
       success: false,
       error: "A collection with this name already exists for this trip.",
@@ -90,11 +185,14 @@ function handleGalleryError(res, error, fallbackMessage) {
 
 module.exports = {
   ACCESSIBILITY_VALUES,
+  COLLECTION_ROLE_VALUES,
   parseObjectId,
   normalizeAccessibility,
+  normalizeCollectionRole,
   assertTripOwnership,
   assertCollectionOwnership,
-  buildImageVisibilityFilter,
-  buildCollectionVisibilityFilter,
+  resolveCollectionAccess,
+  canAccessCollection,
+  getAccessibleCollectionIds,
   handleGalleryError,
 };

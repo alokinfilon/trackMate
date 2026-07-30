@@ -9,6 +9,9 @@ router.get("/collections", verifyUserAuth, galleryController.listCollections);
 router.get("/collections/:collectionId", verifyUserAuth, galleryController.getCollection);
 router.patch("/collections/:collectionId", verifyUserAuth, galleryController.updateCollection);
 router.delete("/collections/:collectionId", verifyUserAuth, galleryController.deleteCollection);
+router.post("/collections/:collectionId/share", verifyUserAuth, galleryController.shareCollection);
+router.get("/collections/:collectionId/members", verifyUserAuth, galleryController.listCollectionMembers);
+router.delete("/collections/:collectionId/members/:memberId", verifyUserAuth, galleryController.revokeCollectionAccess);
 
 router.get("/images/:imageId", verifyUserAuth, galleryController.getImageById);
 router.patch("/images/:imageId/collection", verifyUserAuth, galleryController.assignImageToCollection);
