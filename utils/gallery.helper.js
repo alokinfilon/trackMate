@@ -109,12 +109,12 @@ function canAccessCollection(context, action) {
     return false;
   }
 
-  if (context.collection.accessibility === "private") {
-    return false;
-  }
-
   if (action === "view") {
     return true;
+  }
+
+  if (context.collection.accessibility === "private") {
+    return false;
   }
 
   if (action === "add" || action === "edit") {
@@ -137,10 +137,6 @@ async function getAccessibleCollectionIds(userId, filters = {}) {
     ],
   }).populate({
     path: "collectionId",
-    match: {
-      ...filters,
-      accessibility: { $in: ["public", "shared"] },
-    },
     select: "_id",
   });
 
