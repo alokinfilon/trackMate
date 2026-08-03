@@ -3,7 +3,7 @@ const cache = require("memory-cache");
 
 exports.getHistoricalSites = async (req, res) => {
     try {
-        const { category, page = 1, limit = 20, state, country } = req.query;
+        const { category, page = 1, limit = 10, state, country } = req.query;
 
         const cacheKey = `__express__sites_${category || 'all'}_state_${state || 'all'}_page_${page}_limit_${limit}`;
         const cachedBody = cache.get(cacheKey);

@@ -600,18 +600,6 @@ exports.uploadPhoto = async (req, res) => {
 
       tripObjectId = access.collection.tripId;
       linkedCollectionId = access.collectionObjectId;
-
-      const parsedTrip = parseObjectId(tripId, "trip ID");
-      if (parsedTrip.error) {
-        return res.status(400).json({ success: false, error: parsedTrip.error });
-      }
-
-      if (String(parsedTrip.id) !== String(tripObjectId)) {
-        return res.status(400).json({
-          success: false,
-          error: "Collection does not belong to this trip.",
-        });
-      }
     } else {
       const tripCheck = await assertTripOwnership(tripId, userId);
       if (tripCheck.error) {

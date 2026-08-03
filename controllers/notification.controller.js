@@ -25,7 +25,7 @@ async function listNotifications(req, res) {
         .sort({ createdAt: -1 })
         .skip(skip)
         .limit(parseInt(limit, 10))
-        .populate("actorId", "email mobile full_name")
+        .populate("actorId", "email mobile full_name user_image")
         .populate("collectionId", "name accessibility tripId")
         .populate("shareId", "role status"),
       Notification.countDocuments({ userId, state: "unread" }),
